@@ -1,0 +1,47 @@
+.home-container{
+    max-width: 1440px;
+    width: 80%;
+    margin: auto;
+    padding: 5rem 0 20rem 0;
+
+    .row{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .cards-container{
+        width: 100%;
+        margin-top: 6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .cards-row{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 1.5rem
+        }
+    }
+
+    .control{
+        width: 20%;
+        display: flex;
+        align-items: flex-end;
+        
+        button{
+            font-size: 1.3rem;
+            font-weight: 700;
+            height: 2.7em;
+            width: 70%;
+            background: $primary;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+}
