@@ -8,3 +8,13 @@ export const search = async (fields) => {
   });
   return response;
 };
+
+export const getArtifactById = async (id) => {
+  const response = await fetch(`http://localhost:3000/consult/${id}`, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+  return response;
+};

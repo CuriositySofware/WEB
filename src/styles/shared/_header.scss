@@ -21,9 +21,17 @@
         color: $gray;
     }
 
+    .link{
+        text-decoration: none;
+
+        &:focus{
+            color: $primary;
+        }
+    }
     .links-container{
         display: flex;
         gap: 4em;
+
     
         
        span{

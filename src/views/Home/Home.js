@@ -1,10 +1,8 @@
-import { chunk, range, set } from "lodash";
+import { chunk } from "lodash";
 import React, { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import Input from "../../components/Input";
 import Pagination from "../../components/Pagination";
-import Footer from "../../shared/Footer";
-import Header from "../../shared/Header";
 import { search } from "../../services/search";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
@@ -52,46 +50,55 @@ export default function Home() {
 
   return (
     <>
-      <Header />
       <div className="home-container">
         <div className="row">
-          <Input
-            label="Autor"
-            setfields={setfields}
-            fields={fields}
-            name="author"
-            empty={empty}
-          />
-          <Input
-            label="Material"
-            setfields={setfields}
-            fields={fields}
-            name="material"
-            empty={empty}
-          />
-          <Input
-            label="Lugar"
-            setfields={setfields}
-            fields={fields}
-            name="place"
-            empty={empty}
-          />
+          <div className="row-item">
+            <Input
+              label="Autor"
+              setfields={setfields}
+              fields={fields}
+              name="author"
+              empty={empty}
+            />
+          </div>
+          <div className="row-item">
+            <Input
+              label="Material"
+              setfields={setfields}
+              fields={fields}
+              name="material"
+              empty={empty}
+            />
+          </div>
+          <div className="row-item">
+            <Input
+              label="Lugar"
+              setfields={setfields}
+              fields={fields}
+              name="place"
+              empty={empty}
+            />
+          </div>
         </div>
         <div className="row">
-          <Input
-            label="Periodo"
-            setfields={setfields}
-            fields={fields}
-            name="period"
-            empty={empty}
-          />
-          <Input
-            label="Titulo"
-            setfields={setfields}
-            fields={fields}
-            name="title"
-            empty={empty}
-          />
+          <div className="row-item">
+            <Input
+              label="Periodo"
+              setfields={setfields}
+              fields={fields}
+              name="period"
+              empty={empty}
+            />
+          </div>
+          <div className="row-item">
+            <Input
+              label="Titulo"
+              setfields={setfields}
+              fields={fields}
+              name="title"
+              empty={empty}
+            />
+          </div>
           <div className="control">
             <button
               onClick={() => submit()}
@@ -125,8 +132,8 @@ export default function Home() {
           </div>
         )}
         <div className="cards-container">
-          {chunk(pages[activePage - 1], 4).map((row) => (
-            <div className="cards-row">
+          {chunk(pages[activePage - 1], 4).map((row, idx) => (
+            <div className="cards-row" key={idx}>
               {row.map((card) => (
                 <Card infoCard={card} />
               ))}
@@ -141,7 +148,6 @@ export default function Home() {
           />
         )}
       </div>
-      <Footer />;
     </>
   );
 }

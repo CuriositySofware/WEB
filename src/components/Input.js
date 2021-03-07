@@ -1,6 +1,13 @@
 import React from "react";
 
-export default function Input({ label, setfields, name, fields, empty }) {
+export default function Input({
+  label,
+  setfields,
+  name,
+  fields,
+  empty,
+  size = "md",
+}) {
   const handleOnChange = ({ target }) => {
     setfields({
       ...fields,
@@ -8,7 +15,9 @@ export default function Input({ label, setfields, name, fields, empty }) {
     });
   };
   return (
-    <div className={`input-container`}>
+    <div
+      className={`input-container ${size === "sm" ? "input-container-sm" : ""}`}
+    >
       <label>{label}: </label>
       <input
         type="text"

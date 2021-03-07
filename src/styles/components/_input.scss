@@ -1,17 +1,17 @@
 .input-container{
     display: flex;
     flex-direction: column;
-    width: 20%;
+    font-size: 1rem;
     gap: 1rem;
 
     label{
-        font-size: 2rem;
+        font-size: 2em;
         color: $primary;
         font-weight: 700;
     }
 
     input{
-        font-size: 1.3rem;
+        font-size: 1.3em;
         font-weight: 700;
         color: $input-text;
         height: 2.7em;
@@ -35,4 +35,8 @@
         box-shadow: 0px 0px 3px 0px rgba(255, 0, 0, 0.75);
         transition: box-shadow 0.5s;
     }
+}
+
+.input-container-sm{
+    font-size: 0.85rem !important;
 }

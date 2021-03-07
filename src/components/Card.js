@@ -1,7 +1,15 @@
 import React from "react";
+import { useHistory } from "react-router";
 
 export default function Card({ infoCard }) {
-  const { labelArtifact, labelKeeper, labelCreator } = infoCard;
+  const { labelArtifact, labelKeeper, labelCreator, id } = infoCard;
+  console.log(id);
+  const history = useHistory();
+
+  const seeMore = () => {
+    history.push(`/search/${id.value}`);
+  };
+
   return (
     <div className="card-container">
       <div className="card-image">
@@ -17,7 +25,7 @@ export default function Card({ infoCard }) {
         <p>{labelKeeper.value}</p>
       </div>
       <div className="card-button-container">
-        <button>Ver mas...</button>
+        <button onClick={() => seeMore()}>Ver mas...</button>
       </div>
     </div>
   );
