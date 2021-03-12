@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import Loader from "react-loader-spinner";
 import { useParams } from "react-router";
 import { getArtifactById } from "../../services/search";
 
 export default function Detail() {
   const { id } = useParams();
   const [artifact, setartifact] = useState({});
+  const [loading, setloading] = useState(true);
 
   const getArtifact = async () => {
     try {
@@ -19,6 +21,8 @@ export default function Detail() {
       );
     } catch (error) {
       console.log(error);
+    } finally {
+      setloading(false);
     }
   };
 
@@ -27,29 +31,43 @@ export default function Detail() {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="detail-container">
-      <div className="image-container">
-        <i className="far fa-image"></i>
-      </div>
-      <div className="info-container">
-        <h2>{artifact.artifactLabel}</h2>
-        <div className="info">
-          <span>Autor</span>
-          <span>{artifact.authorLabel}</span>
+    <>
+      {loading ? (
+        <div className="loader-detail">
+          <Loader
+            type="Circles"
+            color="#313B72"
+            height={100}
+            width={100}
+            visible={true}
+          />
         </div>
-        <div className="info">
-          <span>Material</span>
-          <span>{artifact.materialLabel}</span>
+      ) : (
+        <div className="detail-container">
+          <div className="image-container">
+            <i className="far fa-image"></i>
+          </div>
+          <div className="info-container">
+            <h2>{artifact.artifactLabel}</h2>
+            <div className="info">
+              <span>Autor</span>
+              <span>{artifact.authorLabel}</span>
+            </div>
+            <div className="info">
+              <span>Material</span>
+              <span>{artifact.materialLabel}</span>
+            </div>
+            <div className="info">
+              <span>Ubicacion</span>
+              <span>{artifact.keeperLabel}</span>
+            </div>
+            <div className="info">
+              <span>Descripcion</span>
+              <span>{artifact.note}</span>
+            </div>
+          </div>
         </div>
-        <div className="info">
-          <span>Ubicacion</span>
-          <span>{artifact.keeperLabel}</span>
-        </div>
-        <div className="info">
-          <span>Descripcion</span>
-          <span>{artifact.note}</span>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }

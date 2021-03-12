@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     color: $primary;
-    padding: 4rem 0 20rem;
+    padding: 4rem 0 0 0;
     .form-container{
         width: 20%;
         display: flex;
@@ -15,6 +15,7 @@
 
         h1{
             font-weight: 900;
+            font-size: 2.5em;
         }
 
 
@@ -25,7 +26,7 @@
             gap: 1.5rem;
 
             button{
-                font-size: 1.3rem;
+                font-size: 1.5rem;
                 font-weight: 700;
                 height: 2.7em;
                 background: $primary;

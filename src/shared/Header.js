@@ -13,12 +13,9 @@ export default function Header() {
       <div className="links-container">
         <Link to="/publish" className="link">
           <span>
-            <i className="fas fa-info-circle"></i>Publications
+            <i className="fas fa-info-circle"></i>Publicar
           </span>
         </Link>
-        <span>
-          <i className="fas fa-sun"></i>About
-        </span>
       </div>
     </nav>
   );
