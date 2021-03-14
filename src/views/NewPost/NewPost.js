@@ -12,7 +12,7 @@ export default function NewPost() {
         <h1>Agrega una nueva obra</h1>
         <div className="form-group">
           <Input
-            label="Titulo"
+            label="Título"
             fields={fields}
             setfields={setfields}
             name="title"
@@ -30,7 +30,7 @@ export default function NewPost() {
             name="author"
           />
           <Input
-            label="Ubicacion"
+            label="Ubicación"
             fields={fields}
             setfields={setfields}
             name="author"
