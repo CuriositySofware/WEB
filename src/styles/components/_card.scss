@@ -1,10 +1,11 @@
 .card-container{
-    font-size: 1.6rem;
-    width: 24%;
+    font-size: 1.2rem;
+    width: 80%;
     border-radius: 5px;
     border: 1px solid $gray;
     color: $primary;
     box-shadow: 0px 0px 10px 0px rgba(192,192,192,0.75);
+    max-width: 25rem;
 
     .card-image{
         padding: 1.5em 0;

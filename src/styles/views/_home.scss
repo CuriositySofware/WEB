@@ -2,33 +2,31 @@
     max-width: 1440px;
     width: 80%;
     margin: auto;
-    padding: 4rem 0 20rem 0;
+    font-size: 1rem;
+    padding: 4em 0 10em ;
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     .image-container{
-        position: absolute;
-        width: 40%;
-        left: 0;
-        right: 0;
-        bottom: -5rem;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        width: 100%;     
+        max-width: 50rem;
+        margin-top: 2.5em;
+        @include center("h");
 
         .noResult{
             width: 50%;
         }
 
         .pristine{
-            width: 80%;
+            width: 100%;
         }
 
         span{
             font-weight: 900;
             color: gray;
             font-size: 3rem;
-            margin-right: 1.5rem;
+            margin-right: 1.5em;
             text-align: center;
         }
     }
@@ -38,25 +36,35 @@
         display: flex;
         justify-content: center;
         width: 100%;
-        bottom: 7rem;
+        bottom: 7em;
     }
 
     .row{
         display: flex;
-        justify-content: space-around;
         width: 100%;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.4em;
+        flex-direction: column;
+        max-width: 78rem;
+        @include center("h");
+
+        & > * + *{
+            margin-top: 1.4em;
+        }
 
         .row-item{
-            width: 20%;
+            width: 100%;
         }
+
+        
     }
 
     .cards-container{
         width: 100%;
         margin-top: 6rem;
         display: flex;
-        flex-direction: column;
+        // flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
         gap: 1.5rem;
 
         .cards-row{
@@ -68,15 +76,19 @@
     }
 
     .control{
-        width: 20%;
+        width: 100%;
+        max-width: 30rem;
         display: flex;
-        align-items: flex-end;
+        margin-left: auto;
+        margin-right: auto;
+
         
         button{
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             height: 2.7em;
-            width: 70%;
+            width: 100%;
+            margin-top: 1em;
             background: $primary;
             color: white;
             display: flex;
@@ -90,6 +102,31 @@
 
             transition: all 0.4s;
         }
+
+        @include breakpoint("medium"){
+            button{
+                width: 60%;
+                font-size: 1.1rem;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: auto;
+
+            }
+        }
+    }
+
+    @include breakpoint("medium"){
+        padding-bottom: 13em;
+
+        .row{
+            flex-direction: row;
+
+            & > * {
+                margin-top: 0;
+            }    
+        }
+
+        
     }
 
 }

@@ -132,13 +132,17 @@ export default function Home() {
           </div>
         )}
         <div className="cards-container">
-          {chunk(pages[activePage - 1], 4).map((row, idx) => (
+          {/* {chunk(pages[activePage - 1], 4).map((row, idx) => (
             <div className="cards-row" key={idx}>
               {row.map((card) => (
                 <Card infoCard={card} />
               ))}
             </div>
-          ))}
+          ))} */}
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
         </div>
         {pages.length > 0 && !loading && (
           <Pagination

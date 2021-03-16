@@ -1,13 +1,17 @@
 .input-container{
     display: flex;
-    flex-direction: column;
-    font-size: 1rem;
-    gap: 1rem;
+    justify-content: space-between;
+    padding: 0 1.2em;
+    font-size: 0.8rem;
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+
 
     label{
-        font-size: 2em;
+        font-size: 1.7em;
         color: $primary;
-        font-weight: 700;
+        font-weight: 700;    
     }
 
     input{
@@ -34,6 +38,14 @@
     .empty {
         box-shadow: 0px 0px 3px 0px rgba(255, 0, 0, 0.75);
         transition: box-shadow 0.5s;
+    }
+
+    @include breakpoint(medium){
+        flex-direction: column;
+
+        label{
+            margin-bottom: 0.4em;
+        }
     }
 }
 

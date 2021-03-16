@@ -1,8 +1,7 @@
 .header-container{
-    height: 8rem;
-    font-size: 1rem;
-    background-color: $header-background;
-    padding: 0 20em;
+    height: 8em;
+    font-size: 0.7rem;
+    padding: 0 5em;
     display: flex;
     align-items: center;
     box-shadow: 0px 0px 1em 0px rgba(122,122,122,0.5);
@@ -48,6 +47,10 @@
             }
        }
         
+    }
+
+    @include breakpoint("medium"){
+        font-size: 1rem;
     }
  
     

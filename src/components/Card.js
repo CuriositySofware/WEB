@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 
-export default function Card({ infoCard }) {
+export default function Card({ infoCard = {} }) {
   const { labelArtifact, labelKeeper, labelCreator, id } = infoCard;
   console.log(id);
   const history = useHistory();
@@ -14,15 +14,15 @@ export default function Card({ infoCard }) {
     <div className="card-container">
       <div className="card-image">
         <i className="far fa-image"></i>
-        <span>{labelArtifact.value}</span>
+        <span>Label</span>
       </div>
       <div className="card-row">
         <span>Autor</span>
-        <p>{labelCreator.value}</p>
+        <p>Romulo Gallegos</p>
       </div>
       <div className="card-row">
         <span>Ubicacion</span>
-        <p>{labelKeeper.value}</p>
+        <p>Caracas</p>
       </div>
       <div className="card-button-container">
         <button onClick={() => seeMore()}>Ver mas...</button>
