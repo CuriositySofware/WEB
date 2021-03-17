@@ -1,132 +1,125 @@
-.home-container{
-    max-width: 1440px;
-    width: 80%;
-    margin: auto;
-    font-size: 1rem;
-    padding: 4em 0 10em ;
-    position: relative;
+.home-container {
+  max-width: 1440px;
+  width: 80%;
+  margin: auto;
+  font-size: 1rem;
+  padding: 4em 0 10em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .image-container {
+    width: 100%;
+    max-width: 50rem;
+    margin-top: 2.5em;
+    @include center("h");
+
+    .noResult {
+      width: 50%;
+    }
+
+    .pristine {
+      width: 100%;
+    }
+
+    span {
+      font-weight: 900;
+      color: gray;
+      font-size: 3rem;
+      margin-right: 1.5em;
+      text-align: center;
+    }
+  }
+
+  .loader-container {
+    position: absolute;
     display: flex;
+    justify-content: center;
+    width: 100%;
+    bottom: 7em;
+  }
+
+  .row {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1.4em;
     flex-direction: column;
+    max-width: 78rem;
+    @include center("h");
 
-    .image-container{
-        width: 100%;     
-        max-width: 50rem;
-        margin-top: 2.5em;
-        @include center("h");
-
-        .noResult{
-            width: 50%;
-        }
-
-        .pristine{
-            width: 100%;
-        }
-
-        span{
-            font-weight: 900;
-            color: gray;
-            font-size: 3rem;
-            margin-right: 1.5em;
-            text-align: center;
-        }
+    & > * + * {
+      margin-top: 1.4em;
     }
 
-    .loader-container{
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        bottom: 7em;
+    .row-item {
+      width: 100%;
+    }
+  }
+
+  .cards-container {
+    width: 100%;
+    margin-top: 6rem;
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    .cards-row {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      gap: 1.5rem;
+    }
+  }
+
+  .control {
+    width: 100%;
+    max-width: 30rem;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+
+    button {
+      font-size: 1.2rem;
+      font-weight: 700;
+      height: 2.7em;
+      width: 100%;
+      margin-top: 1em;
+      background: $primary;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .row{
-        display: flex;
-        width: 100%;
-        margin-bottom: 1.4em;
-        flex-direction: column;
-        max-width: 78rem;
-        @include center("h");
+    .disabled {
+      background: $lightGray;
+      color: $primary;
 
-        & > * + *{
-            margin-top: 1.4em;
-        }
-
-        .row-item{
-            width: 100%;
-        }
-
-        
+      transition: all 0.4s;
     }
 
-    .cards-container{
-        width: 100%;
-        margin-top: 6rem;
-        display: flex;
-        // flex-direction: column;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-
-        .cards-row{
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            gap: 1.5rem
-        }
-    }
-
-    .control{
-        width: 100%;
-        max-width: 30rem;
-        display: flex;
+    @include breakpoint("medium") {
+      button {
+        width: 60%;
+        font-size: 1.1rem;
         margin-left: auto;
         margin-right: auto;
-
-        
-        button{
-            font-size: 1.2rem;
-            font-weight: 700;
-            height: 2.7em;
-            width: 100%;
-            margin-top: 1em;
-            background: $primary;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .disabled{
-            background: $lightGray;
-            color: $primary;
-
-            transition: all 0.4s;
-        }
-
-        @include breakpoint("medium"){
-            button{
-                width: 60%;
-                font-size: 1.1rem;
-                margin-left: auto;
-                margin-right: auto;
-                margin-top: auto;
-
-            }
-        }
+        margin-top: auto;
+      }
     }
+  }
 
-    @include breakpoint("medium"){
-        padding-bottom: 13em;
+  @include breakpoint("medium") {
+    padding-bottom: 13em;
 
-        .row{
-            flex-direction: row;
+    .row {
+      flex-direction: row;
 
-            & > * {
-                margin-top: 0;
-            }    
-        }
-
-        
+      & > * {
+        margin-top: 0;
+      }
     }
-
+  }
 }

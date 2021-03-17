@@ -1,57 +1,51 @@
-.header-container{
-    height: 8em;
-    font-size: 0.7rem;
-    padding: 0 5em;
+.header-container {
+  height: 8em;
+  font-size: 0.7rem;
+  padding: 0 5em;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 1em 0px rgba(122, 122, 122, 0.5);
+  justify-content: space-between;
+  color: $primary;
+
+  h1 {
+    font-weight: 900;
+    font-size: 2.8em;
+  }
+
+  span {
+    font-weight: 700;
+    font-size: 1.7em;
+    color: $gray;
+  }
+
+  .link {
+    text-decoration: none;
+
+    &:focus {
+      color: $primary;
+    }
+  }
+  .links-container {
     display: flex;
-    align-items: center;
-    box-shadow: 0px 0px 1em 0px rgba(122,122,122,0.5);
-    justify-content: space-between;
-    color: $primary;
+    gap: 4em;
 
-
-    h1{
-        font-weight: 900;
-        font-size: 2.8em;
-    }
-
-    span{
-        font-weight: 700;
-        font-size: 1.7em;
+    span {
+      font-size: 1.7em;
+      color: $primary;
+      cursor: pointer;
+      i {
+        margin-right: 5px;
         color: $gray;
+      }
+
+      &:hover {
+        color: $hover !important;
+      }
     }
+  }
 
-    .link{
-        text-decoration: none;
-
-        &:focus{
-            color: $primary;
-        }
-    }
-    .links-container{
-        display: flex;
-        gap: 4em;
-
-    
-        
-       span{
-            font-size: 1.7em;
-            color: $primary ;
-            cursor: pointer;
-            i{
-                margin-right: 5px;
-                color: $gray;
-            }
-
-            &:hover{
-                color: $hover !important;
-            }
-       }
-        
-    }
-
-    @include breakpoint("medium"){
-        font-size: 1rem;
-    }
- 
-    
+  @include breakpoint("medium") {
+    font-size: 1rem;
+  }
 }

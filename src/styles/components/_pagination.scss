@@ -1,24 +1,22 @@
-.pagination-container{
-    width: 100%;
-    display: flex;
-    font-size: 2rem;
-    margin-top: 4rem;
-    gap: 0.8em;
-    justify-content: center;
-    color: $primary;
-    font-weight: 300;
+.pagination-container {
+  width: 100%;
+  display: flex;
+  font-size: 2rem;
+  margin-top: 4rem;
+  gap: 0.8em;
+  justify-content: center;
+  color: $primary;
+  font-weight: 300;
 
-    span{
-        cursor: pointer;
-    }
+  span {
+    cursor: pointer;
+  }
 
-    .arrow{
-        cursor: pointer;
-    }
+  .arrow {
+    cursor: pointer;
+  }
 
-    .actual{
-        font-weight: 900;
-    }
-
-    
+  .actual {
+    font-weight: 900;
+  }
 }

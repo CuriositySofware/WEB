@@ -1,38 +1,35 @@
-
-.form-wrap{
-    width: 100%;
+.form-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: $primary;
+  padding: 4rem 0 0 0;
+  .form-container {
+    width: 20%;
     display: flex;
-    justify-content: center;
-    color: $primary;
-    padding: 4rem 0 0 0;
-    .form-container{
-        width: 20%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 1rem;
-        gap: 3em;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    gap: 3em;
 
-        h1{
-            font-weight: 900;
-            font-size: 2.5em;
-        }
-
-
-        .form-group{
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-
-            button{
-                font-size: 1.5rem;
-                font-weight: 700;
-                height: 2.7em;
-                background: $primary;
-                color: white;
-            }
-        }
-        
+    h1 {
+      font-weight: 900;
+      font-size: 2.5em;
     }
+
+    .form-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      button {
+        font-size: 1.5rem;
+        font-weight: 700;
+        height: 2.7em;
+        background: $primary;
+        color: white;
+      }
+    }
+  }
 }

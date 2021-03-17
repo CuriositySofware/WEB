@@ -1,35 +1,34 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
-    position: relative;
+  font-size: 62.5%;
+  position: relative;
 }
 
 body {
-    font-family: 'Lato', sans-serif;
-    min-height: 100vh;
-    width: 100vw;
-    overflow-x: hidden;
+  font-family: "Lato", sans-serif;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
-input{
-    border: none;
-    &:focus{
-        outline: none;
-    }
-    
+input {
+  border: none;
+  &:focus {
+    outline: none;
+  }
 }
 
-button{
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 
-    &:focus{
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }

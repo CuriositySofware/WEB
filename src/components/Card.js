@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import PropTypes from "prop-types";
 
 export default function Card({ infoCard = {} }) {
   const { labelArtifact, labelKeeper, labelCreator, id } = infoCard;
@@ -30,3 +31,7 @@ export default function Card({ infoCard = {} }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  infoCard: PropTypes.object,
+};

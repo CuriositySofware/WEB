@@ -1,19 +1,17 @@
-
 @mixin breakpoint($key) {
+  $size: map-get($breakpoints, $key);
 
-    $size: map-get($breakpoints, $key );
-
-    @media only screen and (min-width: $size) {
-        @content
-    }
-};
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
 
 @mixin center($direction: "v") {
-    @if $direction == "v" {
-        margin-top: auto;
-        margin-bottom: auto;
-    } @else {
-        margin-left: auto;
-        margin-right: auto;
-    }
+  @if $direction == "v" {
+    margin-top: auto;
+    margin-bottom: auto;
+  } @else {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

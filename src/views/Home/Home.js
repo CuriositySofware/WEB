@@ -139,10 +139,10 @@ export default function Home() {
               ))}
             </div>
           ))} */}
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </div>
         {pages.length > 0 && !loading && (
           <Pagination
