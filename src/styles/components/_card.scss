@@ -5,7 +5,7 @@
   border: 1px solid $gray;
   color: $primary;
   box-shadow: 0px 0px 10px 0px rgba(192, 192, 192, 0.75);
-  max-width: 25rem;
+  width: 25rem;
 
   .card-image {
     padding: 1.5em 0;
@@ -60,5 +60,9 @@
         transition: box-shadow 0.5s;
       }
     }
+  }
+
+  @include breakpoint("medium-large") {
+    font-size: 1.5rem;
   }
 }

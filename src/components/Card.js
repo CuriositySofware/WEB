@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 export default function Card({ infoCard = {} }) {
   const { labelArtifact, labelKeeper, labelCreator, id } = infoCard;
-  console.log(id);
   const history = useHistory();
 
   const seeMore = () => {
@@ -15,15 +14,15 @@ export default function Card({ infoCard = {} }) {
     <div className="card-container">
       <div className="card-image">
         <i className="far fa-image"></i>
-        <span>Label</span>
+        <span>{labelArtifact.value}</span>
       </div>
       <div className="card-row">
         <span>Autor</span>
-        <p>Romulo Gallegos</p>
+        <p>{labelCreator.value}</p>
       </div>
       <div className="card-row">
         <span>Ubicacion</span>
-        <p>Caracas</p>
+        <p>{labelKeeper.value}</p>
       </div>
       <div className="card-button-container">
         <button onClick={() => seeMore()}>Ver mas...</button>
@@ -33,5 +32,5 @@ export default function Card({ infoCard = {} }) {
 }
 
 Card.propTypes = {
-  infoCard: PropTypes.object,
+  infoCard: PropTypes.any,
 };

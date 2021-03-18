@@ -12,6 +12,9 @@
     width: 100%;
     max-width: 50rem;
     margin-top: 2.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     @include center("h");
 
     .noResult {
@@ -25,8 +28,8 @@
     span {
       font-weight: 900;
       color: gray;
-      font-size: 3rem;
-      margin-right: 1.5em;
+      font-size: clamp(2rem, 5.1vw, 3rem);
+      margin-bottom: 2rem;
       text-align: center;
     }
   }
@@ -59,15 +62,15 @@
   .cards-container {
     width: 100%;
     margin-top: 6rem;
-    display: flex;
-    // flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+
+    & > * + * {
+      margin-top: 1.5rem;
+    }
 
     .cards-row {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       width: 100%;
       gap: 1.5rem;
     }
@@ -99,8 +102,12 @@
 
       transition: all 0.4s;
     }
+  }
 
-    @include breakpoint("medium") {
+  @include breakpoint("medium") {
+    padding-bottom: 13em;
+
+    .control {
       button {
         width: 60%;
         font-size: 1.1rem;
@@ -109,16 +116,24 @@
         margin-top: auto;
       }
     }
-  }
 
-  @include breakpoint("medium") {
-    padding-bottom: 13em;
+    .image-container {
+      flex-direction: row;
+    }
 
     .row {
       flex-direction: row;
 
       & > * {
         margin-top: 0;
+      }
+    }
+  }
+
+  @include breakpoint("medium-large") {
+    .control {
+      button {
+        font-size: 1.3rem;
       }
     }
   }

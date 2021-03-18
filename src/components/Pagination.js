@@ -1,5 +1,6 @@
 import { range } from "lodash";
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Pagination({
   numberOfPages,
@@ -18,6 +19,7 @@ export default function Pagination({
         <span
           className={`number ${activePage === number ? "actual" : ""}`}
           onClick={() => setactivePage(number)}
+          key={number}
         >
           {number}
         </span>
@@ -35,3 +37,9 @@ export default function Pagination({
     </div>
   );
 }
+
+Pagination.propTypes = {
+  numberOfPages: PropTypes.number,
+  activePage: PropTypes.number,
+  setactivePage: PropTypes.func,
+};

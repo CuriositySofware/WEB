@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Input({
   label,
@@ -30,3 +31,12 @@ export default function Input({
     </div>
   );
 }
+
+Input.propTypes = {
+  label: PropTypes.string,
+  setfields: PropTypes.func,
+  name: PropTypes.string,
+  fields: PropTypes.object,
+  empty: PropTypes.bool,
+  size: PropTypes.string,
+};

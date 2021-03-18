@@ -44,6 +44,10 @@
       margin-bottom: 0.4em;
     }
   }
+
+  @include breakpoint("medium-large") {
+    font-size: 1rem;
+  }
 }
 
 .input-container-sm {
