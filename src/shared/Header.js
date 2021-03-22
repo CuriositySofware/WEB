@@ -6,7 +6,7 @@ export default function Header() {
     <nav className="header-container">
       <div className="logo-container">
         <Link to="/search" className="link">
-          <h1>CURIOSITY</h1>
+          <h1>CURIOCITY</h1>
         </Link>
         <span>Proyecto RUTAS</span>
       </div>

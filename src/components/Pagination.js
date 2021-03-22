@@ -24,8 +24,6 @@ export default function Pagination({
           {number}
         </span>
       ))}
-      {/* <span className="number">1</span>
-      <span className="number actual">2</span> */}
       <span
         className="arrow"
         onClick={() =>
