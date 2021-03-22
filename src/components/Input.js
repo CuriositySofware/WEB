@@ -8,6 +8,8 @@ export default function Input({
   fields,
   empty,
   size = "md",
+  submit,
+  fullWidth,
 }) {
   const handleOnChange = ({ target }) => {
     setfields({
@@ -17,7 +19,9 @@ export default function Input({
   };
   return (
     <div
-      className={`input-container ${size === "sm" ? "input-container-sm" : ""}`}
+      className={`input-container ${
+        size === "sm" ? "input-container-sm" : ""
+      } ${fullWidth && "fullWidth"}`}
     >
       <label>{label}: </label>
       <input
@@ -27,6 +31,7 @@ export default function Input({
         name={name}
         autoComplete="off"
         onChange={(e) => handleOnChange(e)}
+        onKeyDown={(e) => e.key === "Enter" && submit()}
       />{" "}
     </div>
   );
@@ -39,4 +44,6 @@ Input.propTypes = {
   fields: PropTypes.object,
   empty: PropTypes.bool,
   size: PropTypes.string,
+  submit: PropTypes.func,
+  fullWidth: PropTypes.bool,
 };

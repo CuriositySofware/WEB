@@ -59,6 +59,7 @@ export default function Home() {
               fields={fields}
               name="author"
               empty={empty}
+              submit={submit}
             />
           </div>
           <div className="row-item">
@@ -68,6 +69,7 @@ export default function Home() {
               fields={fields}
               name="material"
               empty={empty}
+              submit={submit}
             />
           </div>
           <div className="row-item">
@@ -77,6 +79,7 @@ export default function Home() {
               fields={fields}
               name="place"
               empty={empty}
+              submit={submit}
             />
           </div>
         </div>
@@ -88,6 +91,7 @@ export default function Home() {
               fields={fields}
               name="period"
               empty={empty}
+              submit={submit}
             />
           </div>
           <div className="row-item">
@@ -97,6 +101,7 @@ export default function Home() {
               fields={fields}
               name="title"
               empty={empty}
+              submit={submit}
             />
           </div>
           <div className="control">
@@ -120,26 +125,27 @@ export default function Home() {
             <img src={noResults} alt="" className="noResult" />
           </div>
         )}
-        {loading && (
+        {loading ? (
           <div className="loader-container">
             <Loader
               type="Circles"
               color="#313B72"
-              height={100}
-              width={100}
+              height={80}
+              width={80}
               visible={true}
             />
           </div>
+        ) : (
+          <div className="cards-container">
+            {chunk(pages[activePage - 1], 4).map((row, idx) => (
+              <div className="cards-row" key={idx}>
+                {row.map((card) => (
+                  <Card infoCard={card} key={card.id.value} />
+                ))}
+              </div>
+            ))}
+          </div>
         )}
-        <div className="cards-container">
-          {chunk(pages[activePage - 1], 4).map((row, idx) => (
-            <div className="cards-row" key={idx}>
-              {row.map((card) => (
-                <Card infoCard={card} key={card.id.value} />
-              ))}
-            </div>
-          ))}
-        </div>
         {pages.length > 0 && !loading && (
           <Pagination
             numberOfPages={pages.length}

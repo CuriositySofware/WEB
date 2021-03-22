@@ -5,6 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import Footer from "./shared/Footer";
 import Header from "./shared/Header";
 import Detail from "./views/Detail/Detail";
 import Home from "./views/Home/Home";
@@ -20,6 +21,7 @@ export default function AppRouter() {
         <Route exact path="/publish" component={() => <NewPost />} />
         <Redirect to="/search" />
       </Switch>
+      <Footer />
     </Router>
   );
 }

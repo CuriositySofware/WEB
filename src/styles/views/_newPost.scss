@@ -5,6 +5,7 @@
   color: $primary;
   padding: 4rem 0 0 0;
   .form-container {
+    min-width: 30em;
     width: 20%;
     display: flex;
     flex-direction: column;
@@ -25,10 +26,12 @@
 
       button {
         font-size: 1.5rem;
+        width: 90%;
         font-weight: 700;
         height: 2.7em;
         background: $primary;
         color: white;
+        @include center("h");
       }
     }
   }

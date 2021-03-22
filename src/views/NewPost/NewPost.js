@@ -16,24 +16,28 @@ export default function NewPost() {
             fields={fields}
             setfields={setfields}
             name="title"
+            fullWidth={true}
           />
           <Input
             label="Autor"
             fields={fields}
             setfields={setfields}
             name="author"
+            fullWidth={true}
           />
           <Input
             label="Materiales"
             fields={fields}
             setfields={setfields}
             name="author"
+            fullWidth={true}
           />
           <Input
             label="Ubicación"
             fields={fields}
             setfields={setfields}
             name="author"
+            fullWidth={true}
           />
           <button className="btn form-button">Agregar</button>
         </div>
