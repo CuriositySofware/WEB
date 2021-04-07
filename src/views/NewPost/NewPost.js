@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
 import { createArtifact, getMuseums } from "../../services/search";
@@ -10,13 +10,19 @@ export default function NewPost() {
     material: "",
     location: "",
   });
+
   const [museums, setMuseums] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
   const execMuseumsRequest = async () => {
     const result = await getMuseums();
     setMuseums(result);
+  };
+
+  const someFieldIsEmpty = () => {
+    const { title, author, material, location } = fields;
+    return !(title && author && material && location);
   };
 
   const onSelectChange = (museumIndex) => {
@@ -26,11 +32,16 @@ export default function NewPost() {
   const submit = async () => {
     console.log(fields);
 
+    if (someFieldIsEmpty()) {
+      setError("Debe llenar todos los campos.");
+      return;
+    }
+
     const response = await createArtifact(fields);
     const jsonResponse = await response.json();
 
     if (!jsonResponse.ok) {
-      setError(true);
+      setError("Ocurrió un error inesperado, porfavor intentelo mas tarde.");
     } else {
       setSuccess(true);
     }
@@ -74,12 +85,9 @@ export default function NewPost() {
             fullWidth={true}
             submit={submit}
           />
+
           <Select onSelect={onSelectChange} museums={museums} />
-          {error && (
-            <span className="form__error">
-              Ocurrió un error inesperado, porfavor intentelo mas tarde.
-            </span>
-          )}
+          {error && <span className="form__error">{error}</span>}
           {success && (
             <span className="form__success">
               Los datos se han agregado exitosamente.
