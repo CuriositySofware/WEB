@@ -11,6 +11,8 @@ export default function NewPost() {
     location: "",
   });
   const [museums, setMuseums] = useState([]);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const execMuseumsRequest = async () => {
     const result = await getMuseums();
@@ -27,12 +29,21 @@ export default function NewPost() {
     const response = await createArtifact(fields);
     const jsonResponse = await response.json();
 
-    console.log(jsonResponse);
+    if (!jsonResponse.ok) {
+      setError(true);
+    } else {
+      setSuccess(true);
+    }
   };
 
   useEffect(() => {
     execMuseumsRequest();
   }, []);
+
+  useEffect(() => {
+    setError(false);
+    setSuccess(false);
+  }, [fields]);
 
   return (
     <div className="form-wrap">
@@ -64,6 +75,16 @@ export default function NewPost() {
             submit={submit}
           />
           <Select onSelect={onSelectChange} museums={museums} />
+          {error && (
+            <span className="form__error">
+              Ocurrió un error inesperado, porfavor intentelo mas tarde.
+            </span>
+          )}
+          {success && (
+            <span className="form__success">
+              Los datos se han agregado exitosamente.
+            </span>
+          )}
           <button className="btn form-button" onClick={() => submit()}>
             Agregar
           </button>
