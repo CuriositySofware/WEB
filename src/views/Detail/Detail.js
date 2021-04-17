@@ -51,7 +51,7 @@ export default function Detail() {
             <h2>{artifact.artifactLabel}</h2>
             <div className="info">
               <span>Autor</span>
-              <span>{artifact.authorLabel}</span>
+              <span>{artifact?.authorLabel || "Desconocido"}</span>
             </div>
             <div className="info">
               <span>Material</span>
@@ -60,6 +60,10 @@ export default function Detail() {
             <div className="info">
               <span>Ubicacion</span>
               <span>{artifact.keeperLabel}</span>
+            </div>
+            <div className="info">
+              <span>Periodo</span>
+              <span>{artifact.period_l || "Desconocido"}</span>
             </div>
             <div className="info">
               <span>Descripcion</span>

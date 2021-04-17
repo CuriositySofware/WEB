@@ -16,6 +16,11 @@ export default function Header() {
             <i className="fas fa-info-circle"></i>Publicar
           </span>
         </Link>
+        <Link to="/applications" className="link">
+          <span>
+            <i className="fas fa-clipboard-list"></i>Solicitudes
+          </span>
+        </Link>
       </div>
     </nav>
   );

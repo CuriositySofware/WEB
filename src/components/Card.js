@@ -18,7 +18,7 @@ export default function Card({ infoCard = {} }) {
       </div>
       <div className="card-row">
         <span>Autor</span>
-        <p>{labelCreator.value}</p>
+        <p>{labelCreator?.value || "Desconocido"}</p>
       </div>
       <div className="card-row">
         <span>Ubicacion</span>

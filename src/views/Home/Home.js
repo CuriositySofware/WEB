@@ -54,7 +54,7 @@ export default function Home() {
         <div className="row">
           <div className="row-item">
             <Input
-              label="Autor"
+              label="Autorrr"
               setfields={setfields}
               fields={fields}
               name="author"

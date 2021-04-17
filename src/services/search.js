@@ -1,5 +1,5 @@
 export const search = async (fields) => {
-  const response = await fetch("http://localhost:3000/consult", {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/consult`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -10,17 +10,20 @@ export const search = async (fields) => {
 };
 
 export const getArtifactById = async (id) => {
-  const response = await fetch(`http://localhost:3000/consult/${id}`, {
-    method: "GET",
-    headers: {
-      "content-type": "application/json",
-    },
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_API_URL}/artifact/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    }
+  );
   return response;
 };
 
 export const createArtifact = async (fields) => {
-  const response = await fetch(`http://localhost:3000/create`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/create`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -31,7 +34,7 @@ export const createArtifact = async (fields) => {
 };
 
 export const getMuseums = async () => {
-  return fetch(`http://localhost:3000/museums`, {
+  return fetch(`${process.env.REACT_APP_API_URL}/museums`, {
     method: "GET",
     headers: {
       "content-type": "application/json",

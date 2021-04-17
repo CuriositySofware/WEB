@@ -9,6 +9,7 @@ export default function NewPost() {
     author: "",
     material: "",
     location: "",
+    description: "",
   });
 
   const [museums, setMuseums] = useState([]);
@@ -30,8 +31,6 @@ export default function NewPost() {
   };
 
   const submit = async () => {
-    console.log(fields);
-
     if (someFieldIsEmpty()) {
       setError("Debe llenar todos los campos.");
       return;
@@ -82,6 +81,15 @@ export default function NewPost() {
             fields={fields}
             setfields={setfields}
             name="material"
+            fullWidth={true}
+            submit={submit}
+          />
+          <Input
+            textarea
+            label="Descripcion"
+            fields={fields}
+            setfields={setfields}
+            name="description"
             fullWidth={true}
             submit={submit}
           />

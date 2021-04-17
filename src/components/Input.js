@@ -9,6 +9,7 @@ export default function Input({
   empty,
   size = "md",
   submit,
+  textarea,
   fullWidth,
 }) {
   const handleOnChange = ({ target }) => {
@@ -24,15 +25,26 @@ export default function Input({
       } ${fullWidth && "fullWidth"}`}
     >
       <label>{label}: </label>
-      <input
-        type="text"
-        placeholder="Busqueda"
-        className={empty ? "empty" : ""}
-        name={name}
-        autoComplete="off"
-        onChange={(e) => handleOnChange(e)}
-        onKeyDown={(e) => e.key === "Enter" && submit()}
-      />{" "}
+      {textarea ? (
+        <textarea
+          placeholder="Busqueda"
+          className={empty ? "empty" : ""}
+          name={name}
+          autoComplete="off"
+          onChange={(e) => handleOnChange(e)}
+          onKeyDown={(e) => e.key === "Enter" && submit()}
+        />
+      ) : (
+        <input
+          type="text"
+          placeholder="Busqueda"
+          className={empty ? "empty" : ""}
+          name={name}
+          autoComplete="off"
+          onChange={(e) => handleOnChange(e)}
+          onKeyDown={(e) => e.key === "Enter" && submit()}
+        />
+      )}
     </div>
   );
 }
@@ -45,5 +57,6 @@ Input.propTypes = {
   empty: PropTypes.bool,
   size: PropTypes.string,
   submit: PropTypes.func,
+  textarea: PropTypes.bool,
   fullWidth: PropTypes.bool,
 };

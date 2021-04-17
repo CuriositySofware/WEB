@@ -1,0 +1,21 @@
+.applications {
+  min-height: calc(100vh - (8 * 0.7rem) - 6rem);
+  padding: 4rem 0 13rem 0;
+  width: 90%;
+  max-width: 60rem;
+  min-width: 30rem;
+  margin: auto;
+
+  h1 {
+    text-align: center;
+    color: $primary;
+    margin-bottom: 2rem;
+    font-weight: 900;
+    font-size: 2.5rem;
+  }
+
+  &__container {
+    border: 0.1rem solid $gray;
+    border-top: none;
+  }
+}

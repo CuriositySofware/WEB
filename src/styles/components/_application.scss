@@ -1,0 +1,95 @@
+.application {
+  display: flex;
+  height: 3em;
+  align-items: center;
+  padding: 0 5em 0 1em;
+  position: relative;
+  font-size: 1.3rem;
+  border-top: 0.1rem solid $gray;
+  cursor: pointer;
+
+  &::after {
+    $--border-width: 0.5em;
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 1.3em;
+    transform: translateY(-50%);
+    border-top: $--border-width solid $primary;
+    border-left: $--border-width solid transparent;
+    border-right: $--border-width solid transparent;
+    transition: transform 250ms;
+  }
+
+  &.rotate::after {
+    transform: translateY(-50%) rotate(-90deg);
+  }
+
+  i {
+    font-size: 1.2em;
+    color: $primary;
+  }
+
+  span {
+    padding-left: 1em;
+    flex-grow: 1;
+  }
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em 2em;
+  font-size: 1.1rem;
+
+  .column {
+    display: flex;
+    &:nth-child(2) {
+      margin-top: 0.6em;
+    }
+
+    .label {
+      margin-right: 0.3em;
+      color: $primary;
+      font-weight: 900;
+    }
+  }
+
+  .row {
+    flex-basis: 50%;
+
+    &--fullw {
+      flex-basis: 100% !important;
+      margin-top: 0.6em;
+    }
+  }
+
+  .controls {
+    margin-top: 1.5em;
+    button {
+      padding: 0.8em;
+      color: white;
+      font-size: 1em;
+      font-weight: 900;
+      &:nth-child(1) {
+        margin-right: 1em;
+      }
+    }
+    .approve {
+      background: hsl(120, 100%, 25%) !important;
+    }
+
+    .decline {
+      background: hsl(0, 100%, 35%);
+    }
+  }
+}
+
+@include breakpoint("medium") {
+  .application {
+    font-size: 1.5rem;
+  }
+  .details {
+    font-size: 1.3rem !important;
+  }
+}

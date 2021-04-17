@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Footer from "./shared/Footer";
 import Header from "./shared/Header";
+import Applications from "./views/Applications/Applications";
 import Detail from "./views/Detail/Detail";
 import Home from "./views/Home/Home";
 import NewPost from "./views/NewPost/NewPost";
@@ -19,6 +20,7 @@ export default function AppRouter() {
         <Route exact path="/search" component={() => <Home />} />
         <Route exact path="/search/:id" component={() => <Detail />} />
         <Route exact path="/publish" component={() => <NewPost />} />
+        <Route exact path="/applications" component={() => <Applications />} />
         <Redirect to="/search" />
       </Switch>
       <Footer />

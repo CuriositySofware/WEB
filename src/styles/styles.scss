@@ -7,6 +7,7 @@
 @import "./views/home";
 @import "./views/detail";
 @import "./views/newPost";
+@import "./views/applications";
 
 // Shared
 @import "./shared/header";
@@ -17,3 +18,5 @@
 @import "./components/card";
 @import "./components/pagination";
 @import "./components/select";
+@import "./components/application";
+@import "./components/badge";
