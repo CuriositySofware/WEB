@@ -1,12 +1,16 @@
 .header-container {
   height: 8em;
   font-size: 0.7rem;
+  width: 100vw;
   padding: 0 5em;
+  background: white;
   display: flex;
   align-items: center;
   box-shadow: 0px 0px 1em 0px rgba(122, 122, 122, 0.5);
   justify-content: space-between;
   color: $primary;
+  position: relative;
+  z-index: 5;
 
   h1 {
     font-weight: 900;
@@ -27,7 +31,7 @@
     }
   }
   .links-container {
-    display: flex;
+    display: none;
     gap: 4em;
 
     span {
@@ -45,7 +49,46 @@
     }
   }
 
+  .menu {
+    width: 2.5rem;
+    cursor: pointer;
+    position: absolute;
+    right: 3rem;
+    transition: all 300ms ease-in-out;
+    &--translate {
+      transform: translateX(0.5rem);
+    }
+    &__bar {
+      width: 100%;
+      height: 0.5rem;
+      background: $primary;
+      margin: 0.2rem 0;
+      border-radius: 1rem;
+      transition: all 300ms ease-in-out;
+
+      &--top {
+        transform: rotate(45deg) translateY(1rem);
+      }
+
+      &--middle {
+        opacity: 0;
+        transform: translate(-0.5rem);
+      }
+
+      &--bottom {
+        transform: rotate(-45deg) translateY(-1rem);
+      }
+    }
+  }
+
   @include breakpoint("medium") {
     font-size: 1rem;
+    .links-container {
+      display: flex;
+    }
+
+    .menu {
+      display: none;
+    }
   }
 }

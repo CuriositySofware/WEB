@@ -10,6 +10,7 @@ import Header from "./shared/Header";
 import Applications from "./views/Applications/Applications";
 import Detail from "./views/Detail/Detail";
 import Home from "./views/Home/Home";
+import Login from "./views/Login/Login";
 import NewPost from "./views/NewPost/NewPost";
 
 export default function AppRouter() {
@@ -21,6 +22,7 @@ export default function AppRouter() {
         <Route exact path="/search/:id" component={() => <Detail />} />
         <Route exact path="/publish" component={() => <NewPost />} />
         <Route exact path="/applications" component={() => <Applications />} />
+        <Route exact path="/login" component={() => <Login />} />
         <Redirect to="/search" />
       </Switch>
       <Footer />

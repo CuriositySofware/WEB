@@ -1,11 +1,14 @@
 import "./App.css";
 import "./styles/styles.scss";
 import AppRouter from "./AppRouter";
+import { AdminProvider } from "./context/adminContext";
 
 function App() {
   return (
     <>
-      <AppRouter />
+      <AdminProvider>
+        <AppRouter />
+      </AdminProvider>
     </>
   );
 }

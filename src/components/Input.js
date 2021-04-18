@@ -1,17 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function Input({
-  label,
-  setfields,
-  name,
-  fields,
-  empty,
-  size = "md",
-  submit,
-  textarea,
-  fullWidth,
-}) {
+export default function Input(props) {
+  const {
+    label,
+    setfields,
+    name,
+    fields,
+    empty,
+    size = "md",
+    submit,
+    textarea,
+    fullWidth,
+    placeholder = "Busqueda",
+    ...restProps
+  } = props;
   const handleOnChange = ({ target }) => {
     setfields({
       ...fields,
@@ -22,27 +25,29 @@ export default function Input({
     <div
       className={`input-container ${
         size === "sm" ? "input-container-sm" : ""
-      } ${fullWidth && "fullWidth"}`}
+      } ${fullWidth && "fullWidth"} ${!label && "input-container--center"}`}
     >
-      <label>{label}: </label>
+      <label>{label && `${label}:`} </label>
       {textarea ? (
         <textarea
-          placeholder="Busqueda"
+          placeholder={placeholder}
           className={empty ? "empty" : ""}
           name={name}
           autoComplete="off"
           onChange={(e) => handleOnChange(e)}
           onKeyDown={(e) => e.key === "Enter" && submit()}
+          {...restProps}
         />
       ) : (
         <input
           type="text"
-          placeholder="Busqueda"
+          placeholder={placeholder}
           className={empty ? "empty" : ""}
           name={name}
           autoComplete="off"
           onChange={(e) => handleOnChange(e)}
           onKeyDown={(e) => e.key === "Enter" && submit()}
+          {...restProps}
         />
       )}
     </div>
@@ -59,4 +64,5 @@ Input.propTypes = {
   submit: PropTypes.func,
   textarea: PropTypes.bool,
   fullWidth: PropTypes.bool,
+  placeholder: PropTypes.string,
 };
