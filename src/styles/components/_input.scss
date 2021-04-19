@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   padding: 0 1.2em;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   max-width: 30rem;
-
+  margin: 0 auto;
   &--center {
     justify-content: center;
   }
@@ -19,6 +19,8 @@
   textarea {
     font-size: 1.3em;
     font-weight: 700;
+    width: 100%;
+    max-width: 18rem;
     color: $input-text;
     height: 2.7em;
     padding: 0 0.8em;
@@ -49,6 +51,11 @@
 
   @include breakpoint(medium) {
     flex-direction: column;
+
+    input,
+    textarea {
+      max-width: none;
+    }
 
     label {
       margin-bottom: 0.4em;

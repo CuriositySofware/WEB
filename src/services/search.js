@@ -1,5 +1,7 @@
+const API = process.env.REACT_APP_API_URL;
+
 export const search = async (fields) => {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/consult`, {
+  const response = await fetch(`${API}/consult`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -10,20 +12,17 @@ export const search = async (fields) => {
 };
 
 export const getArtifactById = async (id) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_API_URL}/artifact/${id}`,
-    {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-      },
-    }
-  );
+  const response = await fetch(`${API}/artifact/${id}`, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+    },
+  });
   return response;
 };
 
 export const createArtifact = async (fields) => {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/create`, {
+  const response = await fetch(`${API}/create`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -34,7 +33,7 @@ export const createArtifact = async (fields) => {
 };
 
 export const getMuseums = async () => {
-  return fetch(`${process.env.REACT_APP_API_URL}/museums`, {
+  return fetch(`${API}/museums`, {
     method: "GET",
     headers: {
       "content-type": "application/json",
@@ -42,4 +41,16 @@ export const getMuseums = async () => {
   })
     .then((resp) => resp.json())
     .then((resp) => resp.result);
+};
+
+export const updateArtifact = async (id, action) => {
+  return fetch(`${API}/update/${id}`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ action }),
+  })
+    .then((resp) => resp.json())
+    .then((resp) => console.log(resp));
 };

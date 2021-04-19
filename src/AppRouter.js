@@ -18,11 +18,11 @@ export default function AppRouter() {
     <Router>
       <Header />
       <Switch>
+        <Route exact path="/login" component={() => <Login />} />
         <Route exact path="/search" component={() => <Home />} />
         <Route exact path="/search/:id" component={() => <Detail />} />
         <Route exact path="/publish" component={() => <NewPost />} />
         <Route exact path="/applications" component={() => <Applications />} />
-        <Route exact path="/login" component={() => <Login />} />
         <Redirect to="/search" />
       </Switch>
       <Footer />

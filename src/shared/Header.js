@@ -7,7 +7,12 @@ export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const {
     state: { authenticated },
+    dispatch,
   } = useAdmin();
+
+  const logout = () => {
+    dispatch({ type: "logout" });
+  };
   return (
     <>
       <nav className="header-container">
@@ -24,11 +29,18 @@ export default function Header() {
             </span>
           </Link>
           {authenticated ? (
-            <Link to="/applications" className="link">
-              <span>
-                <i className="fas fa-clipboard-list"></i>Solicitudes
-              </span>
-            </Link>
+            <>
+              <Link to="/applications" className="link">
+                <span>
+                  <i className="fas fa-clipboard-list"></i>Solicitudes
+                </span>
+              </Link>
+              <Link to="/login" className="link" onClick={logout}>
+                <span>
+                  <i className="fas fa-sign-out-alt"></i>Cerrar Sesión
+                </span>
+              </Link>
+            </>
           ) : (
             <Link to="/login" className="link">
               <span>

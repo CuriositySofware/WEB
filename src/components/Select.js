@@ -4,10 +4,15 @@ import PropTypes from "prop-types";
 export default function Select({ museums = [], onSelect = (e) => e }) {
   return (
     <div className="select">
-      <span className="label">Ubicacion</span>
+      <span className="label">Ubicación</span>
       <div className="select__container">
-        <select name="" id="" onChange={(e) => onSelect(e.target.value)}>
-          <option value="" selected disabled>
+        <select
+          name=""
+          id=""
+          onChange={(e) => onSelect(e.target.value)}
+          defaultValue="DEFAULT"
+        >
+          <option value="DEFAULT" disabled>
             Seleccione un museo
           </option>
           {museums.map((museum, index) => (

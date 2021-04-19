@@ -86,7 +86,7 @@ export default function NewPost() {
           />
           <Input
             textarea
-            label="Descripcion"
+            label="Descripción"
             fields={fields}
             setfields={setfields}
             name="description"

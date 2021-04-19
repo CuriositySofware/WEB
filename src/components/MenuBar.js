@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAdmin } from "../context/adminContext";
 
 export default function MenuBar({ openMenu = false, setOpenMenu }) {
@@ -7,13 +7,10 @@ export default function MenuBar({ openMenu = false, setOpenMenu }) {
     state: { authenticated },
     dispatch,
   } = useAdmin();
-  const history = useHistory();
 
   const logout = () => {
     setOpenMenu(false);
-    history.replace("/login");
     dispatch({ type: "logout" });
-    console.log("here");
   };
 
   return (
@@ -38,9 +35,9 @@ export default function MenuBar({ openMenu = false, setOpenMenu }) {
               <i className="fas  fa-clipboard-list"></i>Solicitudes
             </span>
           </Link>
-          <Link to="/search" className="menuBar__link" onClick={logout}>
+          <Link to="/login" className="menuBar__link" onClick={logout}>
             <span>
-              <i className="fas  fa-clipboard-list"></i>Cerrar Sesion
+              <i className="fas fa-sign-out-alt"></i>Cerrar Sesión
             </span>
           </Link>
         </>

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Badge from "./Badge";
+import { updateArtifact } from "../services/search";
 
-export default function Application() {
+export default function Application({ app, removeApplication, idx }) {
   const [openDetails, setOpenDetails] = useState(false);
-  const [status, setStatus] = useState("pending");
 
   const changeStatus = (status) => {
-    setStatus(status);
+    updateArtifact(app.id.value, status);
+    removeApplication(idx);
     setOpenDetails(false);
   };
   return (
@@ -16,60 +16,57 @@ export default function Application() {
         onClick={() => setOpenDetails(!openDetails)}
       >
         <i className="fas fa-clipboard-list"></i>
-        <span>Escultura de barro</span>
-        <Badge variant={status} />
+        <span>{app.labelArtifact.value}</span>
       </div>
       {openDetails && (
         <div className="details">
           <div className="row">
             <div className="column">
               <h4 className="label">Titulo:</h4>
-              <p>Escultura de Barro</p>
+              <p>{app.labelArtifact.value}</p>
             </div>
             <div className="column">
               <h4 className="label">Autor:</h4>
-              <p>Marco Benitez</p>
+              <p>{app.labelCreator.value}</p>
             </div>
           </div>
           <div className="row">
             <div className="column">
               <h4 className="label">Material:</h4>
-              <p>Barro</p>
+              <p>{app.labelMaterial.value}</p>
             </div>
             <div className="column">
               <h4 className="label">Ubicacion:</h4>
-              <p>Musea nacional de arequipa</p>
+              <p>{app.labelKeeper.value}</p>
             </div>
           </div>
           <div className="row row--fullw">
             <div className="column">
               <h4 className="label">Periodo:</h4>
-              <p>Pre jurasico</p>
+              <p>{app.perios_l?.value || "Desconocido"}</p>
             </div>
           </div>
 
           <div className="row row--fullw">
             <div className="column">
               <h4 className="label">Descripcion:</h4>
-              <p>Esta es una prueba</p>
+              <p>{app.note.value}</p>
             </div>
           </div>
-          {status === "pending" && (
-            <div className="controls">
-              <button
-                className="approve"
-                onClick={() => changeStatus("success")}
-              >
-                Aprobar
-              </button>
-              <button
-                className="decline"
-                onClick={() => changeStatus("declined")}
-              >
-                Rechazar
-              </button>
-            </div>
-          )}
+          <div className="controls">
+            <button
+              className="approve"
+              onClick={() => changeStatus("approved")}
+            >
+              Aprobar
+            </button>
+            <button
+              className="decline"
+              onClick={() => changeStatus("declined")}
+            >
+              Rechazar
+            </button>
+          </div>
         </div>
       )}
     </>

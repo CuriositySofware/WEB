@@ -32,7 +32,6 @@ export default function Home() {
       try {
         const response = await search(fields);
         const jsonResponse = await response.json();
-        console.log(chunk(jsonResponse.result, 8));
         setpages(chunk(jsonResponse.result, 8));
       } catch (error) {
         console.log(error);
@@ -54,7 +53,7 @@ export default function Home() {
         <div className="row">
           <div className="row-item">
             <Input
-              label="Autorrr"
+              label="Autor"
               setfields={setfields}
               fields={fields}
               name="author"

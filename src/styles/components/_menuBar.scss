@@ -1,6 +1,6 @@
 .menuBar {
   width: 40%;
-  min-height: 20rem;
+  min-height: 15rem;
   background: $primary;
   position: absolute;
   right: 0;
@@ -12,12 +12,17 @@
   transition: all 250ms ease-in-out;
   border-radius: 0.5rem;
   z-index: 1;
+  // display: none;
 
   &__link {
     color: $gray;
     font-size: 1.3rem;
     font-weight: 900;
     text-decoration: none;
+
+    span {
+      text-align: end;
+    }
 
     i {
       margin-right: 1rem;

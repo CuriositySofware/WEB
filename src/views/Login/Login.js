@@ -16,11 +16,10 @@ export default function Login() {
     e?.preventDefault();
     if (fields.username === "admin" && fields.password === "admin") {
       dispatch({ type: "login" });
-      history.push("/search");
+      history.push("applications");
     } else {
       setError(true);
     }
-    console.log(fields);
   };
   return (
     <div className="login">
@@ -45,7 +44,7 @@ export default function Login() {
         />
         {error && (
           <span className="login__container__error">
-            Credenciales Invalidas
+            Credenciales inválidas
           </span>
         )}
 
