@@ -44,7 +44,7 @@ export default function Header() {
           ) : (
             <Link to="/login" className="link">
               <span>
-                <i className="fas fa-user-cog"></i>Admin
+              <i className="fas fa-sign-in-alt"></i>Login
               </span>
             </Link>
           )}

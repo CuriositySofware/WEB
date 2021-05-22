@@ -11,7 +11,9 @@ export default function Input(props) {
     size = "md",
     submit,
     textarea,
+    text,
     fullWidth,
+    required,
     placeholder = "Busqueda",
     ...restProps
   } = props;
@@ -40,10 +42,11 @@ export default function Input(props) {
         />
       ) : (
         <input
-          type="text"
+          type={text ?? "text"}
           placeholder={placeholder}
           className={empty ? "empty" : ""}
           name={name}
+          required={required ?? false}
           autoComplete="off"
           onChange={(e) => handleOnChange(e)}
           onKeyDown={(e) => e.key === "Enter" && submit()}
@@ -63,6 +66,8 @@ Input.propTypes = {
   size: PropTypes.string,
   submit: PropTypes.func,
   textarea: PropTypes.bool,
+  required: PropTypes.bool,
+  text: PropTypes.string,
   fullWidth: PropTypes.bool,
   placeholder: PropTypes.string,
 };

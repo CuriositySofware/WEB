@@ -1,0 +1,54 @@
+.register {
+  min-height: calc(100vh - (8 * 0.7rem) - 6rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    width: 70%;
+    max-width: 40rem;
+    padding: 2em 0;
+    min-height: 20rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px 0px rgba(192, 192, 192, 0.75);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    & > * + * {
+      margin-top: 1.4em !important;
+    }
+
+    i {
+      font-size: 4em;
+      color: $primary;
+    }
+
+    &__error {
+      color: rgb(194, 1, 1) !important;
+      font-weight: 900;
+    }
+
+    button {
+      width: 40%;
+      padding: 0.4em 0;
+
+      font-size: 1.3em;
+      background: $primary;
+      color: white;
+      font-weight: 900;
+    }
+  }
+  
+}
+
+@include breakpoint("medium") {
+  .login {
+    font-size: 1.3rem;
+    min-height: calc(100vh - 8rem - (6 * 1.4rem));
+  }
+}
+
+.MuiOutlinedInput-input {
+  padding: 10px !important
+}
