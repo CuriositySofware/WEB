@@ -31,7 +31,7 @@ export default function Register() {
     if (fields.password !== fields.password_confirmation) {
       setPassError(true);
     } else if(!passValidation(fields.password)) {
-      console.log("holiiii");
+     
       setPassError(true);
     } else {
       setPassError(false);

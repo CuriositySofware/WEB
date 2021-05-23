@@ -13,6 +13,7 @@ export default function Header() {
   const logout = () => {
     dispatch({ type: "logout" });
   };
+  
   return (
     <>
       <nav className="header-container">

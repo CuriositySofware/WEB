@@ -7,7 +7,6 @@ const adminReducer = (state, action) => {
     case "login":
       localStorage.setItem("admin", true);
       return { authenticated: true };
-
     case "logout":
       localStorage.setItem("admin", false);
       return { authenticated: false };
@@ -18,11 +17,11 @@ const adminReducer = (state, action) => {
 
 const AdminProvider = ({ children }) => {
   const [state, dispatch] = useReducer(adminReducer, {
-    authenticated: localStorage.getItem("admin"),
+    authenticated: localStorage.getItem("admin") === "false" ? false : true,
   });
 
   const value = { state, dispatch };
-
+  
   return (
     <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
   );
