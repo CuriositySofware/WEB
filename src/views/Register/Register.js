@@ -2,30 +2,41 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import Input from "../../components/Input";
 import { useAdmin } from "../../context/adminContext";
-import { DatePicker } from "@material-ui/pickers";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
+import passValidation from '../../services/validations';
 
 export default function Register() {
   const [fields, setFields] = useState({
     nombre: "",
     apellido: "",
     email: "",
+    contraseña: "",
+    birthday: "",
+    password: "",
+    password_confirmation: "",
   });
   const history = useHistory();
   const [error, setError] = useState(false);
+  const [passError, setPassError] = useState(false);
   const { dispatch } = useAdmin();
-
+  // TODO: importante cambiar el handler register para que tenga mas sentido
   const handleRegisterSubmit = (e) => {
     e?.preventDefault();
     if (fields.username === "admin" && fields.password === "admin") {
       dispatch({ type: "register" });
       history.push("applications");
+      setError(false);
     } else {
       setError(true);
     }
+    if (fields.password !== fields.password_confirmation) {
+      setPassError(true);
+    } else if(!passValidation(fields.password)) {
+      console.log("holiiii");
+      setPassError(true);
+    } else {
+      setPassError(false);
+    }
   };
-  const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
     <div className="register">
@@ -59,16 +70,53 @@ export default function Register() {
           setfields={setFields}
           submit={handleRegisterSubmit}
         />
-        <div style={{display: "flex", justifyItems: "space-between"}}>
-        <p>Fecha de nacimiento</p>
-        <MuiPickersUtilsProvider utils={DateFnsUtils} >
-          <DatePicker format="dd/MM/yyyy" value={selectedDate} onChange={handleDateChange} inputVariant="outlined" style={{padding: 0}}/>
-        </MuiPickersUtilsProvider>
-        </div>
+        <Input
+          placeholder="Fecha de nacimiento"
+          name="birthday"
+          fullWidth
+          type="text"
+          onFocus={(e) => {
+            e.currentTarget.type = "date";
+          }}
+          fields={fields}
+          required={true}
+          setfields={setFields}
+          submit={handleRegisterSubmit}
+        />
+        <Input
+          placeholder="Contraseña"
+          name="password"
+          fullWidth
+          type="password"
+          fields={fields}
+          required={true}
+          setfields={setFields}
+          submit={handleRegisterSubmit}
+        />
+        <Input
+          placeholder="Confirmar contraseña"
+          name="password_confirmation"
+          fullWidth
+          type="password"
+          fields={fields}
+          required={true}
+          setfields={setFields}
+          submit={handleRegisterSubmit}
+        />
         {error && (
           <span className="register__container__error">
             Información inválida
           </span>
+        )}
+        {passError && (
+          <>
+          <span className="register__container__error">
+            Las contraseñas no coinciden o la password es inválida
+          </span>
+          <span className="register__container__error" style={{textAlign: "center"}}>
+            La contraseña debe tener al menos 8 caracteres, al menos 1 mayúscula, 1 minúscula, 1 número y 1 caracter especial
+          </span>
+          </>
         )}
         <button className="register__button" type="submit">
           Registrarse

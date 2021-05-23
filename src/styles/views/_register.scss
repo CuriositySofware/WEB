@@ -39,16 +39,11 @@
       font-weight: 900;
     }
   }
-  
 }
 
 @include breakpoint("medium") {
-  .login {
+  .register {
     font-size: 1.3rem;
     min-height: calc(100vh - 8rem - (6 * 1.4rem));
   }
-}
-
-.MuiOutlinedInput-input {
-  padding: 10px !important
 }

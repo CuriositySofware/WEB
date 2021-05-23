@@ -13,6 +13,8 @@ export default function Input(props) {
     textarea,
     text,
     fullWidth,
+    onFocus,
+    onBlur,
     required,
     placeholder = "Busqueda",
     ...restProps
@@ -22,7 +24,7 @@ export default function Input(props) {
       ...fields,
       [target.name]: target.value,
     });
-  };
+  };  
   return (
     <div
       className={`input-container ${
@@ -46,6 +48,8 @@ export default function Input(props) {
           placeholder={placeholder}
           className={empty ? "empty" : ""}
           name={name}
+          onFocus={onFocus}
+          onBlur={onBlur}
           required={required ?? false}
           autoComplete="off"
           onChange={(e) => handleOnChange(e)}
@@ -66,6 +70,8 @@ Input.propTypes = {
   size: PropTypes.string,
   submit: PropTypes.func,
   textarea: PropTypes.bool,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   required: PropTypes.bool,
   text: PropTypes.string,
   fullWidth: PropTypes.bool,
