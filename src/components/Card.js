@@ -13,19 +13,29 @@ export default function Card({ infoCard = {} }) {
   return (
     <div className="card-container">
       <div className="card-image">
-        <i className="far fa-image"></i>
         <span>{labelArtifact.value}</span>
       </div>
-      <div className="card-row">
+      <div className="card-image" style={{ border: "none"}}>
+        <i className="far fa-image"></i>
+      </div>
+      <div className="card-row" style={{ border: "none"}}>
         <span>Autor</span>
         <p>{labelCreator?.value || "Desconocido"}</p>
       </div>
       <div className="card-row">
-        <span>Ubicacion</span>
+        <span>Ubicación</span>
         <p>{labelKeeper.value}</p>
       </div>
+      <div className="card-row">
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item"><span>Autor:</span><br />{labelCreator?.value || "Desconocido"}</li>
+        <br />
+        <li><span>Ubicación:</span><br />{labelKeeper.value}</li>
+        
+      </ul>
+      </div>
       <div className="card-button-container">
-        <button onClick={() => seeMore()}>Ver mas...</button>
+        <button onClick={() => seeMore()} style={{color: "purple"}}> Detalles </button>
       </div>
     </div>
   );
