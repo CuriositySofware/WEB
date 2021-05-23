@@ -6,13 +6,18 @@
   color: $primary;
   box-shadow: 0px 0px 10px 0px rgba(192, 192, 192, 0.75);
   width: 25rem;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 10px 10px 13px 5px rgba(66, 70, 84, 0.4);
+    transition: box-shadow 0.5s;    
+  }
 
   .card-image {
     padding: 1.5em 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-bottom: 1px solid $gray;
 
     span {
       font-size: 1.2em;
@@ -32,7 +37,7 @@
     display: flex;
     justify-content: space-between;
     padding: 1.5em;
-    border-bottom: 1px solid $gray;
+   
 
     span {
       font-weight: 700;
@@ -43,7 +48,7 @@
     }
   }
 
-  .card-button-container {
+/*   .card-button-container {
     width: 100%;
     padding: 1.5em 0;
     display: flex;
@@ -60,7 +65,7 @@
         transition: box-shadow 0.5s;
       }
     }
-  }
+  } */
 
   @include breakpoint("medium-large") {
     font-size: 1.5rem;

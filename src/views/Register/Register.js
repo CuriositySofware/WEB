@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import Input from "../../components/Input";
 import { useAdmin } from "../../context/adminContext";
-import passValidation from '../../services/validations';
+import passValidation from "../../services/validations";
 
 export default function Register() {
   const [fields, setFields] = useState({
@@ -30,8 +30,7 @@ export default function Register() {
     }
     if (fields.password !== fields.password_confirmation) {
       setPassError(true);
-    } else if(!passValidation(fields.password)) {
-     
+    } else if (!passValidation(fields.password)) {
       setPassError(true);
     } else {
       setPassError(false);
@@ -110,12 +109,16 @@ export default function Register() {
         )}
         {passError && (
           <>
-          <span className="register__container__error">
-            Las contraseñas no coinciden o la password es inválida
-          </span>
-          <span className="register__container__error" style={{textAlign: "center"}}>
-            La contraseña debe tener al menos 8 caracteres, al menos 1 mayúscula, 1 minúscula, 1 número y 1 caracter especial
-          </span>
+            <span className="register__container__error">
+              Las contraseñas no coinciden o la password es inválida
+            </span>
+            <span
+              className="register__container__error"
+              style={{ textAlign: "center" }}
+            >
+              La contraseña debe tener al menos 8 caracteres, al menos 1
+              mayúscula, 1 minúscula, 1 número y 1 caracter especial
+            </span>
           </>
         )}
         <button className="register__button" type="submit">

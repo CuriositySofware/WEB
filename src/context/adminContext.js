@@ -32,7 +32,6 @@ const useAdmin = () => {
   if (context === undefined) {
     throw new Error("useAdmin must be used within a AdminProvider");
   }
-
   return context;
 };
 
