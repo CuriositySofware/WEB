@@ -24,7 +24,7 @@ export default function Login() {
   return (
     <div className="login">
       <form className="login__container" onSubmit={handleLoginSubmit}>
-        <i className="fas fa-user-cog"></i>
+        <i className="fas fa-sign-in-alt"></i>
         <Input
           placeholder="Usuario"
           name="username"

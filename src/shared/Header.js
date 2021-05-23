@@ -43,11 +43,18 @@ export default function Header() {
               </Link>
             </>
           ) : (
+            <>           
             <Link to="/login" className="link">
               <span>
               <i className="fas fa-sign-in-alt"></i>Login
               </span>
             </Link>
+            <Link to="/register" className="link">
+              <span>
+              <i className="fas fa-address-card"></i>Registrarse
+              </span>
+            </Link>
+            </>
           )}
         </div>
         <div
