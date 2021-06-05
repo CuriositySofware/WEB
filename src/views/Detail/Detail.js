@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
 import { useParams } from "react-router";
 import { getArtifactById } from "../../services/search";
+import { useLocation } from "react-router-dom";
 
 export default function Detail() {
+  const location = useLocation();
+  const imageUrl = location.data?.url;
   const { id } = useParams();
   const [artifact, setartifact] = useState({});
   const [loading, setloading] = useState(true);
@@ -45,7 +48,11 @@ export default function Detail() {
       ) : (
         <div className="detail-container">
           <div className="image-container">
-            <i className="far fa-image"></i>
+            {location.data?.found ? (
+              <img src={imageUrl} />
+            ) : (
+              <i className="far fa-image" />
+            )}
           </div>
           <div className="info-container">
             <h2>{artifact.artifactLabel}</h2>

@@ -54,3 +54,20 @@ export const updateArtifact = async (id, action) => {
     .then((resp) => resp.json())
     .then((resp) => console.log(resp));
 };
+
+export const getImage = async (id) => {
+  const search_id = id.value.split("_x");
+  console.log(search_id);
+  const response = await fetch(`${API}/image/${search_id[0]}`, {
+    method: "GET",
+  });
+  if (response.status != 200) {
+    return {
+      success: false,
+    };
+  }
+  return {
+    success: true,
+    img: response,
+  };
+};
