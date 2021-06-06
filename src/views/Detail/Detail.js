@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
 import { useParams } from "react-router";
 import { getArtifactById } from "../../services/search";
-import { useLocation } from "react-router-dom";
+import { getImage } from "../../services/search";
 
 export default function Detail() {
-  const location = useLocation();
-  const imageUrl = location.data?.url;
   const { id } = useParams();
   const [artifact, setartifact] = useState({});
   const [loading, setloading] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState("");
 
   const getArtifact = async () => {
     try {
@@ -30,6 +29,17 @@ export default function Detail() {
   };
 
   useEffect(() => {
+    getImage(id).then((response) => {
+      if (response.success) {
+        response.img.blob().then((url) => {
+          const outside = URL.createObjectURL(url);
+          setImageLoaded(outside);
+        });
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     getArtifact();
     // eslint-disable-next-line
   }, []);
@@ -48,8 +58,8 @@ export default function Detail() {
       ) : (
         <div className="detail-container">
           <div className="image-container">
-            {location.data?.found ? (
-              <img src={imageUrl} />
+            {imageLoaded ? (
+              <img src={imageLoaded} />
             ) : (
               <i className="far fa-image" />
             )}

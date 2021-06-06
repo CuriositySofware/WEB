@@ -14,10 +14,6 @@ export default function Card({ infoCard = {} }) {
   const seeMore = () => {
     history.push({
       pathname: `/search/${id.value}`,
-      data: {
-        found: imageLoaded === "404" || imageLoaded === "" ? false : true,
-        url: imageLoaded,
-      },
     });
   };
 
@@ -32,7 +28,7 @@ export default function Card({ infoCard = {} }) {
   };
 
   useEffect(() => {
-    getImage(id).then((response) => {
+    getImage(id.value).then((response) => {
       if (response.success) {
         response.img.blob().then((url) => {
           const outside = URL.createObjectURL(url);
