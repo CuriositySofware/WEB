@@ -1,18 +1,12 @@
 import React from "react";
-import { useHistory } from "react-router";
 import PropTypes from "prop-types";
 
 export default function Card({ infoCard = {} }) {
   const { labelArtifact, labelKeeper, labelCreator, id } = infoCard;
-  const history = useHistory();
-
-  const seeMore = () => {
-    history.push(`/search/${id.value}`);
-  };
 
   return (
-    <div className="card-container" onClick={() => seeMore()}>
-      <div className="card-image">
+    <div className="card-container" data-bs-toggle="modal" data-bs-target={`#modal-${id.value}`}>
+      <div className="card-title">
         <span>{labelArtifact.value}</span>
       </div>
       <div className="card-image">

@@ -78,17 +78,20 @@
   }
 
   .control {
-    width: 100%;
-    max-width: 30rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
 
-    button {
+    .action-btn {
+      border-radius: 2rem;
+      text-decoration: none;
       font-size: 1.2rem;
       font-weight: 700;
+      margin: 0;
       height: 2.7em;
-      width: 100%;
+      width: 75%;
       margin-top: 1em;
       background: $primary;
       color: white;

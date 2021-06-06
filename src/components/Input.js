@@ -19,6 +19,7 @@ export default function Input(props) {
     placeholder = "Busqueda",
     ...restProps
   } = props;
+  
   const handleOnChange = ({ target }) => {
     setfields({
       ...fields,
