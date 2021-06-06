@@ -57,6 +57,11 @@
       }
     }
   }
+  img {
+    width: 100%;
+
+    object-fit: cover;
+  }
 
   @include breakpoint("medium-large") {
     flex-direction: row;

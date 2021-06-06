@@ -56,6 +56,12 @@
     }
   }
 
+  img {
+    width: 100%;
+    max-height: 225px;
+    object-fit: cover
+  }
+
 /*   .card-button-container {
     width: 100%;
     padding: 1.5em 0;
