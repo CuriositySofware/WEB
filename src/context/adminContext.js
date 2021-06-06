@@ -1,15 +1,23 @@
 import { createContext, useContext, useReducer } from "react";
+import { registerHandler } from "../services/users";
 
 const AdminContext = createContext();
 
-const adminReducer = (state, action) => {
+const adminReducer = async (state, action) => {
+  let result = "";
   switch (action.type) {
+    case "register":
+ 
+      result = await registerHandler(action.payload);
+      action.callback(result);
+      //Hay que cambiar esto
+      return { ...state, authenticated: true };
     case "login":
       localStorage.setItem("admin", true);
-      return { authenticated: true };
+      return { ...state, authenticated: true };
     case "logout":
       localStorage.setItem("admin", false);
-      return { authenticated: false };
+      return { ...state, authenticated: false };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
@@ -21,7 +29,7 @@ const AdminProvider = ({ children }) => {
   });
 
   const value = { state, dispatch };
-  
+
   return (
     <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
   );
