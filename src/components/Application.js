@@ -12,14 +12,14 @@ export default function Application({ app, removeApplication, idx }) {
   return (
     <>
       <div
-        className={`application ${openDetails ? "rotate" : ""}`}
+        className={`application d-flex align-items-center ${openDetails ? "rotate" : ""}`}
         onClick={() => setOpenDetails(!openDetails)}
       >
         <i className="fas fa-clipboard-list"></i>
         <span>{app.labelArtifact.value}</span>
       </div>
       {openDetails && (
-        <div className="details">
+        <div className="details d-flex">
           <div className="row">
             <div className="column">
               <h4 className="label">Titulo:</h4>

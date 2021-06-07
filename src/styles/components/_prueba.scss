@@ -1,0 +1,42 @@
+.filter {
+    width: 100vw;
+    position: absolute;
+    z-index: 2;
+    top: 3vw;
+    .input-prueba-container {
+        width: 90vw;
+        height: 5vw;
+        padding: .5vw 1.5vw;
+        border-radius: 2.5vw;
+        border: 1px solid #ced4da;
+        background-color: white;
+        box-shadow: 0 .25vw .25vw 0 #ced4da;
+        
+        .input-prueba {
+            width: 19% !important;
+            height: 98%;
+            margin: 0 1vw;
+            border-right: 1px solid #ced4da;
+            background-color: white;
+            &-label {
+                font-size: 1vw;
+            }
+            &-box {
+                font-size: 1vw;
+                border: none;
+            }
+
+        }
+        .form-control:focus {
+            border: none;
+            box-shadow: none;
+        }
+        .btn-prueba {
+            width: 4.75vw !important;
+            font-size: 2vw;
+            border-radius: 4vw;
+        }
+        
+    }
+    
+}

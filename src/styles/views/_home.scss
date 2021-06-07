@@ -1,7 +1,7 @@
 .home-container {
-  max-width: 1440px;
-  width: 80%;
-  margin: auto;
+  // max-width: 1440px;
+  // width: 80%;
+  // margin: auto;
   font-size: 1rem;
   padding: 4em 0 10em;
   position: relative;
@@ -12,7 +12,7 @@
   .image-container {
     width: 100%;
     max-width: 50rem;
-    margin-top: 2.5em;
+    margin-top: 7.5vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,7 +62,7 @@
 
   .cards-container {
     width: 100%;
-    margin-top: 6rem;
+    margin-top: 7.5vw;
 
     & > * + * {
       margin-top: 1.5rem;

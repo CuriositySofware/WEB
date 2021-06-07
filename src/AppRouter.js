@@ -12,6 +12,7 @@ import Detail from "./views/Detail/Detail";
 import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
 import NewPost from "./views/NewPost/NewPost";
+import Prueba from "./views/Pruebas/Prueba";
 import Register from "./views/Register/Register";
 import Search from "./views/Search/Search";
 
@@ -22,13 +23,14 @@ export default function AppRouter() {
       <Switch>
         <Route exact path="/login" component={() => <Login />} />
         <Route exact path="/register" component={() => <Register />} />      
-        <Route exact path="/search" component={() => <Home />} />
+        <Route exact path="/home" component={() => <Home />} />
         <Route exact path="/search/:id" component={() => <Detail />} />
         <Route exact path="/publish" component={() => <NewPost />} />
         <Route exact path="/applications" component={() => <Applications />} />
-        <Route exact path="/prueba" component={() => <Search />} />
+        <Route exact path="/search" component={() => <Search />} />
+        <Route exact path="/prueba" component={() => <Prueba />} />
         
-        <Redirect to="/search" />
+        <Redirect to="/home" />
       </Switch>
       <Footer />
     </Router>

@@ -1,0 +1,15 @@
+#carousel .overlay {
+    position: absolute;
+    bottom: 7.5vw;
+    right: 2vw;
+    z-index: 1;
+    width: fit-content;
+    height: fit-content;
+    padding: 1vw 2vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+
+    &-text {
+        width: 25vw;
+    }
+}

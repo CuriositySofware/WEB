@@ -18,7 +18,7 @@ export default function Header() {
     <>
       <nav className="header-container">
         <div className="logo-container">
-          <Link to="/search" className="link">
+          <Link to="/home" className="link">
             <h1>CURIOCITY</h1>
           </Link>
           <span>Proyecto RUTAS</span>

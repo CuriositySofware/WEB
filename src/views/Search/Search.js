@@ -51,9 +51,6 @@ export default function Search() {
     fetchData()
   }, []);
 
-  // const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
 
   return (
     <>

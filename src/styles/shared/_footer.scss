@@ -5,11 +5,11 @@ footer {
   font-size: 1rem;
   font-weight: 900;
   display: flex;
-  height: 6em;
+  height: 8em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: auto;
+  // margin-top: auto;
 
   & > * + * {
     margin-top: 1em;

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Input from "./Input";
 
-export default function Filter() {
-
+export default function PruebaComponent() {
     const [fields, setfields] = useState({
         title: "",
         author: "",
@@ -30,7 +28,7 @@ export default function Filter() {
         <>
             <div className="filter d-flex justify-content-center my-2">
                 <div className="input-prueba-container d-flex justify-content-center">
-                    <Input
+                    <InputPrueba 
                         label="Autor"
                         name="author"
                         setfields={setfields}
@@ -38,7 +36,7 @@ export default function Filter() {
                         empty={empty}
                         submit={submit}
                     />
-                    <Input
+                    <InputPrueba 
                         label="Material"
                         name="material"
                         setfields={setfields}
@@ -46,7 +44,7 @@ export default function Filter() {
                         empty={empty}
                         submit={submit}
                     />
-                    <Input
+                    <InputPrueba
                         label="Lugar"
                         name="place"
                         setfields={setfields}
@@ -54,7 +52,7 @@ export default function Filter() {
                         empty={empty}
                         submit={submit}
                     />
-                    <Input
+                    <InputPrueba 
                         label="Periodo"
                         name="period"
                         setfields={setfields}
@@ -62,7 +60,7 @@ export default function Filter() {
                         empty={empty}
                         submit={submit}
                     />
-                    <Input
+                    <InputPrueba 
                         label="Titulo"
                         name="title"
                         setfields={setfields}
@@ -74,5 +72,51 @@ export default function Filter() {
                 </div>
             </div>
         </>
+    )
+}
+
+function InputPrueba(props) {
+    const {
+        label,
+        setfields,
+        name,
+        fields,
+        empty,
+        size = "md",
+        submit,
+        textarea,
+        text,
+        fullWidth,
+        onFocus,
+        onBlur,
+        required,
+        placeholder = "Busqueda",
+        ...restProps
+      } = props;
+      
+      const handleOnChange = ({ target }) => {
+        setfields({
+          ...fields,
+          [target.name]: target.value,
+        });
+      };
+    return (
+        <div className="input-prueba">
+            <label className="input-prueba-label">{label && `${label}:`}</label>
+            <input 
+                type={text ?? "text"}
+                placeholder={placeholder}
+                className="input-prueba-box form-control border-0" 
+                aria-label={placeholder}
+                name={name}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                required={required ?? false}
+                autoComplete="off"
+                onChange={(e) => handleOnChange(e)}
+                onKeyDown={(e) => e.key === "Enter" && submit()}
+                {...restProps}
+            />
+        </div>
     )
 }
