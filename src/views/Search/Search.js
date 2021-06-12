@@ -72,7 +72,7 @@ export default function Search() {
           <div className="loader-container">
             <Loader
               type="Circles"
-              color="#313B72"
+              color="#795933"
               height={80}
               width={80}
               visible={true}

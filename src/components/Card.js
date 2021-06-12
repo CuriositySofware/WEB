@@ -9,17 +9,9 @@ export default function Card({ infoCard = {} }) {
 
   const [imageLoaded, setImageLoaded] = useState("");
 
-  const history = useHistory();
-
-  const seeMore = () => {
-    history.push({
-      pathname: `/search/${id.value}`,
-    });
-  };
-
   const ShowImages = () => {
     if (imageLoaded === "") {
-      return <Loader type="Circles" color="#313B72" visible={true} />;
+      return <Loader type="Circles" color="#795933" visible={true} />;
     } else if (imageLoaded === "404") {
       return <i className="far fa-image"></i>;
     } else {

@@ -45,11 +45,43 @@ export default function Detail() {
   }, []);
   return (
     <>
+      <div
+        className="modal fade"
+        id={`img-modal`}
+        aria-labelledby={`img-modal`}
+        data-bs-keyboard="false"
+        tabIndex="-1"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-lg modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body modal-img-body d-flex justify-content-center">
+              {imageLoaded ? (
+                <img
+                  src={imageLoaded}
+                  data-bs-toggle="modal"
+                  data-bs-target={`img-modal`}
+                />
+              ) : (
+                <i className="far fa-image" />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
       {loading ? (
         <div className="loader-detail">
           <Loader
             type="Circles"
-            color="#313B72"
+            color="#795933"
             height={100}
             width={100}
             visible={true}
@@ -59,7 +91,13 @@ export default function Detail() {
         <div className="detail-container">
           <div className="image-container">
             {imageLoaded ? (
-              <img src={imageLoaded} />
+              <>
+                <img
+                  src={imageLoaded}
+                  data-bs-toggle="modal"
+                  data-bs-target={`#img-modal`}
+                />
+              </>
             ) : (
               <i className="far fa-image" />
             )}

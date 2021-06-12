@@ -3,13 +3,13 @@
   width: 80%;
   border-radius: 5px;
   border: 1px solid $gray;
-  color: $primary;
-  box-shadow: 0px 0px 10px 0px rgba(192, 192, 192, 0.75);
+  color: $dark;
+  box-shadow: 0px 0px 10px 0px rgba($gray, 0.75);
   width: 25rem;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 10px 10px 13px 5px rgba(66, 70, 84, 0.4);
+    box-shadow: 10px 10px 13px 5px rgba($dark, 0.4);
     transition: box-shadow 0.5s;    
   }
 
@@ -19,6 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: $primary;
 
     span {
       text-align: center;
@@ -49,6 +50,7 @@
 
     span {
       font-weight: 700;
+      color: $primary;
     }
 
     p {

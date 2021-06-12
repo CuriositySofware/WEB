@@ -21,14 +21,14 @@
     font-weight: 700;
     width: 100%;
     max-width: 18rem;
-    color: $input-text;
+    color: $dark;
     height: 2.7em;
     padding: 0 0.8em;
     border: 1px solid $gray;
     border-radius: 0.5em;
 
     &:focus {
-      box-shadow: 0px 0px 3px 0px rgba(49, 59, 114, 0.75);
+      box-shadow: 0px 0px 3px 0px rgba($primary, 0.75);
       transition: box-shadow 0.5s;
       outline: none;
     }
@@ -45,7 +45,7 @@
   }
 
   .empty {
-    box-shadow: 0px 0px 3px 0px rgba(255, 0, 0, 0.75);
+    box-shadow: 0px 0px 3px 0px rgba($danger, 0.75);
     transition: box-shadow 0.5s;
   }
 

@@ -4,19 +4,19 @@
   font-size: 1rem;
   padding: 0.3em 0.5em;
   border-radius: 2rem;
-  color: white;
+  color: $light;
   font-weight: 900;
 
   &--pending {
-    background-color: hsl(29, 100%, 47%);
+    background-color: $warning;
   }
 
   &--success {
-    background: rgb(6, 174, 6);
+    background: $success;
   }
 
   &--declined {
-    background: rgb(223, 3, 3);
+    background: $danger;
   }
 }
 

@@ -3,11 +3,12 @@
   // width: 80%;
   // margin: auto;
   font-size: 1rem;
-  padding: 4em 0 10em;
+  padding: 4em 0 5em;
   position: relative;
   display: flex;
   flex-direction: column;
   z-index: 0;
+  background-color: $light;
 
   .image-container {
     width: 100%;
@@ -28,7 +29,7 @@
 
     span {
       font-weight: 900;
-      color: gray;
+      color: $gray;
       font-size: clamp(2rem, 5.1vw, 3rem);
       margin-bottom: 2rem;
       text-align: center;
@@ -94,14 +95,14 @@
       width: 75%;
       margin-top: 1em;
       background: $primary;
-      color: white;
+      color: $light;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .disabled {
-      background: $lightGray;
+      background: $gray;
       color: $primary;
 
       transition: all 0.4s;
@@ -109,7 +110,7 @@
   }
 
   @include breakpoint("medium") {
-    padding-bottom: 13em;
+    padding-bottom: 5em;
 
     .control {
       button {

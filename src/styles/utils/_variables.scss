@@ -1,13 +1,32 @@
-$secondary: #462255;
-$primary: #313b72;
-$primary--300: hsl(257, 40%, 32%);
-$header-background: white;
-$hover: #462255;
-$input-text: #727171;
-$yellow: #fd9251;
-$gray: #c0c0c0;
-$lightGray: #dadada;
+@import "~bootstrap/scss/functions";
+
 $jo: 400px;
+
+$primary: #795933;
+$soft-primary: #FFF1E6;   
+$secondary: #233d4d; 
+$alternative: #2A2D54; 
+$success: #a1c181;
+$info: #619b8a;  
+$warning: #fcca46;  
+$danger: #fe7f2d;
+$dark: #212529;
+$light: #f8f9fa;
+$gray: #c0c0c0;
+
+$theme-colors: (
+  primary: $primary,   // Headers, CTA Buttons, Main Sections -- Lines, Icons, Links
+  soft-primary: $soft-primary,
+  secondary: $secondary, // Secondary Sections -- Lines, Icons, Links
+  alternative: $alternative, // Just if its necessary 
+  success: $success, // Success icons, badges and alerts 
+  info: $info, // Info icons, badges and alerts 
+  warning: $warning, // Warning icons, badges and alerts 
+  danger: $danger, // Danger icons, badges and alerts 
+  dark: $dark, // font color
+  light: $light, // White backgrounds and alternative font color
+  gray: $gray // complementary font color
+);
 
 $breakpoints: (
   "small": 400px,

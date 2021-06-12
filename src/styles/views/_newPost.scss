@@ -25,13 +25,13 @@
       gap: 1.5rem;
 
       .form__error {
-        color: rgb(204, 6, 6);
+        color: $danger;
         font-size: 1.1rem;
       }
 
       .form__success {
         font-size: 1.1rem;
-        color: rgb(9, 138, 9);
+        color: $success;
       }
 
       button {

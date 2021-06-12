@@ -1,24 +1,111 @@
-import React from "react";
-import Carousel from "../../components/Carousel";
-import PruebaComponent from "../../components/Prueba";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { chunk } from "lodash";
+import Loader from "react-loader-spinner";
+import { search } from "../../services/search";
+import CardPrueba from "../../components/CardPrueba";
+import Modal from "../../components/Modal";
+import Pagination from "../../components/Pagination";
+import { main, noResults } from "../../assets";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Filter from "../../components/Filter";
+
+// import dummy_1 from "../../assets/images/dummy-1.png";
+// import dummy_2 from "../../assets/images/dummy-2.png";
+// import dummy_3 from "../../assets/images/dummy-3.png";
+// import dummy_4 from "../../assets/images/dummy-4.png";
+// import dummy_5 from "../../assets/images/dummy-5.png";
 
 export default function Prueba() {
-    return (
-        <div id="carousel" className="carousel slide carousel-fade" data-bs-ride="carousel" data-pause="false">
-            <Carousel />
-            <PruebaComponent />
-            <Overlay />
-        </div>
-    )
-}
 
-function Overlay() {
-    return (
-        <div className="overlay align-items-center">
-            <div className="overlay-text text-end">
-                <h1>CURIOCITY</h1>
-                <p className="d-none d-md-block">Llevando la historia y la cultura peruana a tu hogar</p>
-            </div>
-        </div>
-    )
+
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  let query = useQuery();
+  
+  const [pages, setpages] = useState([]);
+  const [params, setparams] = useState({
+    title: query.get("title"),
+    author: query.get("author"),
+    period: query.get("period"),
+    material: query.get("material"),
+    place: query.get("place"),
+  });
+  const [activePage, setactivePage] = useState(1);
+  const [loading, setloading] = useState(false);
+  const [pristine, setpristine] = useState(true);
+  
+  
+
+  const fetchData = async () => {
+      setpristine(false);
+      setloading(true);
+      try {
+        const response = await search(params);
+        const jsonResponse = await response.json();
+        setpages(chunk(jsonResponse.result, 8));
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setloading(false);
+      }
+  };
+
+  useEffect(() => {
+    fetchData()
+  }, []);
+
+
+  return (
+    <>
+      <div className="home-container">
+        <Filter />
+
+        {pristine && (
+          <div className="image-container">
+            <img src={main} alt="" className="pristine" />
+          </div>
+        )}
+        {!pristine && pages.length === 0 && !loading && (
+          <div className="image-container">
+            <span>No hay resultados</span>
+            <img src={noResults} alt="" className="noResult" />
+          </div>
+        )}
+        {loading ? (
+          <div className="loader-container">
+            <Loader
+              type="Circles"
+              color="#795933"
+              height={80}
+              width={80}
+              visible={true}
+            />
+          </div>
+        ) : (
+          <div className="masonry-container">
+            {chunk(pages[activePage - 1], 4).map((row, idx) => (
+              <div className="masonry" key={idx}>
+                {row.map((card) => (
+                  <CardPrueba infoCard={card} key={card.id.value}/>
+                ))}
+                {row.map((card) => (
+                  <Modal infoCard={card} key={card.id.value}/>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
+        {pages.length > 0 && !loading && (
+          <Pagination
+            numberOfPages={pages.length}
+            activePage={activePage}
+            setactivePage={setactivePage}
+          />
+        )}
+      </div>
+    </>
+  );
 }

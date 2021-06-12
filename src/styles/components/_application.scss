@@ -74,11 +74,11 @@
       }
     }
     .approve {
-      background: hsl(120, 100%, 25%) !important;
+      background: $success !important;
     }
 
     .decline {
-      background: hsl(0, 100%, 35%);
+      background: $danger;
     }
   }
 }

@@ -1,7 +1,9 @@
 // Utils
-@import "./utils/base";
 @import "./utils/variables";
 @import "./utils/mixins";
+@import "./utils/base";
+
+@import "~bootstrap/scss/bootstrap.scss";
 
 // Views
 @import "./views/home";
@@ -10,6 +12,7 @@
 @import "./views/applications";
 @import "./views/login";
 @import "./views/register";
+@import "./views/prueba";
 
 // Shared
 @import "./shared/header";
@@ -21,7 +24,7 @@
 @import "./components/carousel";
 @import "./components/modal";
 @import "./components/pagination";
-@import "./components/prueba";
+@import "./components/filter";
 @import "./components/select";
 @import "./components/overlay";
 @import "./components/application";

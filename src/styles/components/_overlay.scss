@@ -6,8 +6,8 @@
     width: fit-content;
     height: fit-content;
     padding: 1vw 2vw;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: rgba($dark, 0.5);
+    color: $light;
 
     &-text {
         width: 25vw;
