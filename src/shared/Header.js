@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import MenuBar from "../components/MenuBar";
-import { useAdmin } from "../context/adminContext";
+import { useAuth } from "../context/authContext";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const {
     state: { authenticated },
     dispatch,
-  } = useAdmin();
+  } = useAuth();
 
   const logout = () => {
     dispatch({ type: "logout" });

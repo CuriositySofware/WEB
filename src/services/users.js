@@ -16,7 +16,24 @@ export const registerHandler = async ({
       first_name: nombre,
       last_name: apellido,
       password: password,
+      type: "visitor",
     }),
   });
-  return response;
+  const body = await response.json();
+  return body;
+};
+
+export const loginHandler = async ({ email, password }) => {
+  const response = await fetch(`${API}/users/login`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password,
+    }),
+  });
+  const body = await response.json();
+  return body;
 };

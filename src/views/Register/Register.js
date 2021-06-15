@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import Input from "../../components/Input";
-import { useAdmin } from "../../context/adminContext";
+import { useAuth } from "../../context/authContext";
 import passValidation, { infoValidation } from "../../services/validations";
+import Loader from "react-loader-spinner";
 
 export default function Register() {
   const [fields, setFields] = useState({
@@ -16,7 +17,8 @@ export default function Register() {
   const [error, setError] = useState("");
   const [passError, setPassError] = useState(false);
   const [success, setSuccess] = useState("");
-  const { dispatch } = useAdmin();
+  const [spinner, showSpinner] = useState(false);
+  const { dispatch } = useAuth();
   // TODO: importante cambiar el handler register para que tenga mas sentido
   const handleRegisterSubmit = (e) => {
     e?.preventDefault();
@@ -44,19 +46,19 @@ export default function Register() {
     }
 
     if (!_error && !_passError) {
+      showSpinner(true);
       dispatch({
         type: "register",
         payload: fields,
-        callback: (result) => {
-          result.json().then((res) => {
-            if (res.ok) {
-              setSuccess(res.message);
-              setError("");
-            } else {
-              setError(res.message);
-              setSuccess("");
-            }
-          });
+        callback: (res) => {
+          if (res.ok) {
+            setSuccess(res.message);
+            setError("");
+          } else {
+            setError(res.message);
+            setSuccess("");
+          }
+          showSpinner(false);
         },
       });
     }
@@ -133,9 +135,20 @@ export default function Register() {
         {success && (
           <span className="register__container__success">{success}</span>
         )}
-        <button className="register__button" type="submit">
-          Registrarse
-        </button>
+        {spinner && (
+          <Loader
+            type="Circles"
+            color="#313B72"
+            height={100}
+            width={100}
+            visible={true}
+          />
+        )}
+        {!spinner && (
+          <button className="register__button" type="submit">
+            Registrarse
+          </button>
+        )}
       </form>
     </div>
   );
