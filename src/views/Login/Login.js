@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import Input from "../../components/Input";
 import { useAuth } from "../../context/authContext";
 import Loader from "react-loader-spinner";
+import { loginHandler } from "../../services/users";
 
 export default function Login() {
   const [fields, setFields] = useState({
@@ -27,19 +28,21 @@ export default function Login() {
 
     if (!_error) {
       showSpinner(true);
-      dispatch({
-        type: "login",
-        payload: fields,
-        callback: (res) => {
-          if (res.ok) {
-            // setSuccess(res.message);
-            setError("");
-          } else {
-            setError(res.message);
-            // setSuccess("");
-          }
-          showSpinner(false);
-        },
+      loginHandler(fields).then((res) => {
+        if (res.ok) {
+          // setSuccess(res.message);
+          dispatch({
+            type: "login",
+            payload: res,
+          });
+          history.push("/search")
+
+          setError("");
+        } else {
+          setError(res.message);
+          // setSuccess("");
+        }
+        showSpinner(false);
       });
     }
   };

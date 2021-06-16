@@ -4,6 +4,7 @@ import Input from "../../components/Input";
 import { useAuth } from "../../context/authContext";
 import passValidation, { infoValidation } from "../../services/validations";
 import Loader from "react-loader-spinner";
+import { registerHandler } from "../../services/users";
 
 export default function Register() {
   const [fields, setFields] = useState({
@@ -47,19 +48,20 @@ export default function Register() {
 
     if (!_error && !_passError) {
       showSpinner(true);
-      dispatch({
-        type: "register",
-        payload: fields,
-        callback: (res) => {
-          if (res.ok) {
-            setSuccess(res.message);
-            setError("");
-          } else {
-            setError(res.message);
-            setSuccess("");
-          }
-          showSpinner(false);
-        },
+      registerHandler(fields).then((res) => {
+        if (res.ok) {
+          setSuccess(res.message);
+          dispatch({
+            type: "register",
+            payload: res,
+          });
+          setError("");
+          history.push("/search");
+        } else {
+          setError(res.message);
+          setSuccess("");
+        }
+        showSpinner(false);
       });
     }
   };

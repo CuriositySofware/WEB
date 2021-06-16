@@ -37,3 +37,16 @@ export const loginHandler = async ({ email, password }) => {
   const body = await response.json();
   return body;
 };
+
+export const userInfo = async (token) => {
+  
+  const response = await fetch(`${API}/users/user_info`, {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+      Authorization: token,
+    },
+  });
+  const body = await response.json();
+  return body;
+};

@@ -7,7 +7,13 @@ import { search } from "../../services/search";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import { main, noResults } from "../../assets";
+import { useAuth } from "../../context/authContext";
+
 export default function Home() {
+  const {
+    state: { token },
+  } = useAuth();
+
   const [pages, setpages] = useState([]);
   const [fields, setfields] = useState({
     title: "",
@@ -30,7 +36,7 @@ export default function Home() {
       setpristine(false);
       setloading(true);
       try {
-        const response = await search(fields);
+        const response = await search(fields, token);
         const jsonResponse = await response.json();
         setpages(chunk(jsonResponse.result, 8));
       } catch (error) {

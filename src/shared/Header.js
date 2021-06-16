@@ -6,14 +6,14 @@ import { useAuth } from "../context/authContext";
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const {
-    state: { authenticated },
+    state: { isLoggedIn, type },
     dispatch,
   } = useAuth();
 
   const logout = () => {
     dispatch({ type: "logout" });
   };
-  
+
   return (
     <>
       <nav className="header-container">
@@ -24,18 +24,20 @@ export default function Header() {
           <span>Proyecto RUTAS</span>
         </div>
         <div className="links-container">
-          <Link to="/publish" className="link">
-            <span>
-              <i className="fas fa-info-circle"></i>Publicar
-            </span>
-          </Link>
-          {authenticated ? (
+          {isLoggedIn ? (
             <>
-              <Link to="/applications" className="link">
+              <Link to="/publish" className="link">
                 <span>
-                  <i className="fas fa-clipboard-list"></i>Solicitudes
+                  <i className="fas fa-info-circle"></i>Publicar
                 </span>
               </Link>
+              {type === "admin" && (
+                <Link to="/applications" className="link">
+                  <span>
+                    <i className="fas fa-clipboard-list"></i>Solicitudes
+                  </span>
+                </Link>
+              )}
               <Link to="/login" className="link" onClick={logout}>
                 <span>
                   <i className="fas fa-sign-out-alt"></i>Cerrar Sesión
@@ -43,17 +45,17 @@ export default function Header() {
               </Link>
             </>
           ) : (
-            <>           
-            <Link to="/login" className="link">
-              <span>
-              <i className="fas fa-sign-in-alt"></i>Login
-              </span>
-            </Link>
-            <Link to="/register" className="link">
-              <span>
-              <i className="fas fa-address-card"></i>Registrarse
-              </span>
-            </Link>
+            <>
+              <Link to="/login" className="link">
+                <span>
+                  <i className="fas fa-sign-in-alt"></i>Login
+                </span>
+              </Link>
+              <Link to="/register" className="link">
+                <span>
+                  <i className="fas fa-address-card"></i>Registrarse
+                </span>
+              </Link>
             </>
           )}
         </div>

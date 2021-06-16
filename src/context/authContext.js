@@ -1,31 +1,55 @@
 import { createContext, useContext, useReducer } from "react";
-import { registerHandler, loginHandler } from "../services/users";
 
 const AdminContext = createContext();
 
 const manageAuth = (state, result) => {
   if (result.ok) {
     localStorage.setItem("token", result.token);
-    return { ...state, token: result.token };
+    return {
+      ...state,
+      first_name: result.user.first_name,
+      last_name: result.user.last_name,
+      type: result.user.type,
+      token: result.token,
+      isLoggedIn: true,
+      isLoading: false,
+    };
   } else {
     return { ...state };
   }
 };
+const manageInfo = (state, result) => {
+  return {
+    ...state,
+    first_name: result.first_name,
+    last_name: result.last_name,
+    type: result.type,
+    isLoggedIn: true,
+    isLoading: false,
+  };
+};
 
-const authReducer = async (state, action) => {
-  let result = "";
+const authReducer = (state, action) => {
   switch (action.type) {
+    case "userInfo":
+      return manageInfo(state, action.payload);
     case "register":
-      result = await registerHandler(action.payload);
-      action.callback(result);
-      return manageAuth(state, result);
+      return manageAuth(state, action.payload);
     case "login":
-      result = await loginHandler(action.payload);
-      action.callback(result);
-      return manageAuth(state, result);
+      return manageAuth(state, action.payload);
     case "logout":
       localStorage.clear();
-      return { ...state, token: "" };
+      return {
+        ...state,
+        token: "",
+        first_name: "",
+        last_name: "",
+        type: "",
+        isLoggedIn: false,
+        isLoading: false,
+      };
+    case "notLoading":
+      return { ...state, isLoading: false };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }
@@ -34,6 +58,11 @@ const authReducer = async (state, action) => {
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
     token: localStorage.getItem("token"),
+    first_name: "",
+    last_name: "",
+    type: "",
+    isLoggedIn: false,
+    isLoading: true,
   });
   const value = { state, dispatch };
   return (
