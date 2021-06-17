@@ -11,14 +11,12 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Filter from "../../components/Filter";
 
 export default function Search() {
-
-
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
 
   let query = useQuery();
-  
+
   const [pages, setpages] = useState([]);
   const [params, setparams] = useState({
     title: query.get("title"),
@@ -26,31 +24,31 @@ export default function Search() {
     period: query.get("period"),
     material: query.get("material"),
     place: query.get("place"),
+    page: query.get("page"),
   });
   const [activePage, setactivePage] = useState(1);
+  const [page, setPage] = React.useState(1);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [loading, setloading] = useState(false);
   const [pristine, setpristine] = useState(true);
-  
-  
 
   const fetchData = async () => {
-      setpristine(false);
-      setloading(true);
-      try {
-        const response = await search(params);
-        const jsonResponse = await response.json();
-        setpages(chunk(jsonResponse.result, 8));
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setloading(false);
-      }
+    setpristine(false);
+    setloading(true);
+    try {
+      const response = await search(params);
+      const jsonResponse = await response.json();
+      setpages(chunk(jsonResponse.result, 8));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setloading(false);
+    }
   };
 
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, []);
-
 
   return (
     <>
@@ -79,16 +77,14 @@ export default function Search() {
             />
           </div>
         ) : (
-          <div className="cards-container">
+          <div className="masonry-container">
             {chunk(pages[activePage - 1], 4).map((row, idx) => (
-              <div className="cards-row" key={idx}>
-                {row
-                .map((card) => (
-                  <Card infoCard={card} key={card.id.value}/>
+              <div className="masonry" key={idx}>
+                {row.map((card) => (
+                  <Card infoCard={card} key={card.id.value} />
                 ))}
-                {row
-                .map((card) => (
-                  <Modal infoCard={card} key={card.id.value}/>
+                {row.map((card) => (
+                  <Modal infoCard={card} key={card.id.value} />
                 ))}
               </div>
             ))}

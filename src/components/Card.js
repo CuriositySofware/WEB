@@ -5,7 +5,7 @@ import { getImage } from "../services/search";
 import Loader from "react-loader-spinner";
 
 export default function Card({ infoCard = {} }) {
-  const { labelArtifact, labelKeeper, labelCreator, id } = infoCard;
+  const { labelArtifact, labelCreator, id } = infoCard;
 
   const [imageLoaded, setImageLoaded] = useState("");
 
@@ -33,20 +33,13 @@ export default function Card({ infoCard = {} }) {
   }, []);
 
   return (
-    <div className="card-container" data-bs-toggle="modal" data-bs-target={`#modal-${id.value}`}>
-      <div className="card-title">
-        <span>{labelArtifact.value}</span>
-      </div>
-      <div className="card-image">
+    <div className="masonry-item" data-bs-toggle="modal" data-bs-target={`#modal-${id.value}`}>
+      <div className="masonry-img">
         <ShowImages></ShowImages>
       </div>
-      <div className="card-row">
-        <span>Autor</span>
-        <p>{labelCreator?.value || "Desconocido"}</p>
-      </div>
-      <div className="card-row">
-        <span>Ubicación</span>
-        <p>{labelKeeper.value}</p>
+      <div className="card-identifier text-end">
+        <p className="title">{labelArtifact.value}</p>
+        <p className="subtitle">{labelCreator?.value || "Desconocido"}</p>
       </div>
     </div>
   );

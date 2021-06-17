@@ -19,32 +19,46 @@ export default function Input(props) {
     placeholder = "Busqueda",
     ...restProps
   } = props;
-    
   const handleOnChange = ({ target }) => {
     setfields({
       ...fields,
       [target.name]: target.value,
     });
-  };
+  };  
   return (
-      <div className="input-prueba">
-          <label className="input-prueba-label text-primary fw-bold">{label && `${label}:`}</label>
-          <input 
-              type={text ?? "text"}
-              placeholder={placeholder}
-              className="input-prueba-box form-control border-0" 
-              aria-label={placeholder}
-              name={name}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              required={required ?? false}
-              autoComplete="off"
-              onChange={(e) => handleOnChange(e)}
-              onKeyDown={(e) => e.key === "Enter" && submit()}
-              {...restProps}
-          />
-      </div>
-)
+    <div
+      className={`input-container ${
+        size === "sm" ? "input-container-sm" : ""
+      } ${fullWidth && "fullWidth"} ${!label && "input-container--center"}`}
+    >
+      <label>{label && `${label}:`} </label>
+      {textarea ? (
+        <textarea
+          placeholder={placeholder}
+          className={empty ? "empty" : ""}
+          name={name}
+          autoComplete="off"
+          onChange={(e) => handleOnChange(e)}
+          onKeyDown={(e) => e.key === "Enter" && submit()}
+          {...restProps}
+        />
+      ) : (
+        <input
+          type={text ?? "text"}
+          placeholder={placeholder}
+          className={empty ? "empty" : ""}
+          name={name}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          required={required ?? false}
+          autoComplete="off"
+          onChange={(e) => handleOnChange(e)}
+          onKeyDown={(e) => e.key === "Enter" && submit()}
+          {...restProps}
+        />
+      )}
+    </div>
+  );
 }
 
 Input.propTypes = {

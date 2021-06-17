@@ -3,7 +3,7 @@
     position: absolute;
     z-index: 2;
     top: 3vw;
-    .input-prueba-container {
+    .input-filter-container {
         width: 90vw;
         height: 5vw;
         padding: .5vw 1.5vw;
@@ -12,7 +12,7 @@
         background-color: $light;
         box-shadow: 0 .25vw .25vw 0 $gray;
         
-        .input-prueba {
+        .input-filter {
             width: 19% !important;
             height: 98%;
             margin: 0 1vw;
@@ -35,7 +35,7 @@
             border: none;
             box-shadow: none;
         }
-        .btn-prueba {
+        .btn-filter {
             width: 4.75vw !important;
             font-size: 2vw;
             border-radius: 4vw;

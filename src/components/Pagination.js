@@ -7,32 +7,65 @@ export default function Pagination({
   activePage,
   setactivePage,
 }) {
+    console.log(activePage)
+    console.log(numberOfPages)
+    let ceilingPage;
+    let floorPage;
+    if (activePage <= 3 && numberOfPages >= 7){
+        ceilingPage = 7  + activePage - 1;
+        floorPage =  activePage;
+    }
+    else if (activePage > 3 && activePage + 3 < numberOfPages && numberOfPages >= 7){
+      ceilingPage = activePage + 3;
+      floorPage =  activePage - 3;
+    }
+    else if (activePage + 3 >= numberOfPages && numberOfPages >= 7) {
+        ceilingPage = numberOfPages;
+        floorPage = numberOfPages - 7 + 1
+    }
+    else if (numberOfPages < 7) {
+      ceilingPage = numberOfPages;
+      floorPage = 1;
+    }
+    else {
+        ceilingPage = activePage + 3;
+        floorPage = activePage - 3;
+    }
+    
+    console.log(floorPage)
+    console.log(ceilingPage)
   return (
-    <div className="pagination-container">
-      <span
-        className="arrow"
-        onClick={() => activePage > 1 && setactivePage(activePage - 1)}
-      >
-        {"<"}
-      </span>
-      {range(1, numberOfPages + 1, 1).map((number) => (
+    <ul className="pagination pagination-lg justify-content-center">
+      <li className="page-item">
         <span
-          className={`number ${activePage === number ? "actual" : ""}`}
-          onClick={() => setactivePage(number)}
-          key={number}
+          className="page-link"
+          onClick={() => setactivePage(1)}
         >
-          {number}
+          First
         </span>
+      </li>
+      {range(floorPage, ceilingPage + 1, 1).map((number) => (
+          <li className="page-item" key={number}>
+            <span
+            className={`page-link number ${activePage === number ? "actual" : ""}`}
+            onClick={() => setactivePage(number)}
+            >
+            {number}
+            </span>
+          </li>
       ))}
-      <span
-        className="arrow"
-        onClick={() =>
-          activePage < numberOfPages && setactivePage(activePage + 1)
-        }
-      >
-        {">"}
-      </span>
-    </div>
+      <li className="page-item">
+
+        <span
+            className="page-link"
+            onClick={() =>
+            activePage < numberOfPages && setactivePage(numberOfPages)
+            }
+        >
+            Last
+        </span>
+      </li>
+    </ul>
   );
 }
 

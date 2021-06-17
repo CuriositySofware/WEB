@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Input from "./Input";
+import InputFilter from "./InputFilter";
 
 export default function Filter() {
 
@@ -29,8 +29,8 @@ export default function Filter() {
     return (
         <>
             <div className="filter d-flex justify-content-center my-2">
-                <div className="input-prueba-container d-flex justify-content-center">
-                    <Input
+                <div className="input-filter-container d-flex justify-content-center">
+                    <InputFilter
                         label="Autor"
                         name="author"
                         setfields={setfields}
@@ -38,7 +38,7 @@ export default function Filter() {
                         empty={empty}
                         submit={submit}
                     />
-                    <Input
+                    <InputFilter
                         label="Material"
                         name="material"
                         setfields={setfields}
@@ -46,7 +46,7 @@ export default function Filter() {
                         empty={empty}
                         submit={submit}
                     />
-                    <Input
+                    <InputFilter
                         label="Lugar"
                         name="place"
                         setfields={setfields}
@@ -54,7 +54,7 @@ export default function Filter() {
                         empty={empty}
                         submit={submit}
                     />
-                    <Input
+                    <InputFilter
                         label="Periodo"
                         name="period"
                         setfields={setfields}
@@ -62,7 +62,7 @@ export default function Filter() {
                         empty={empty}
                         submit={submit}
                     />
-                    <Input
+                    <InputFilter
                         label="Titulo"
                         name="title"
                         setfields={setfields}
@@ -70,7 +70,7 @@ export default function Filter() {
                         empty={empty}
                         submit={submit}
                     />
-                    <a href={`/search?${submit()}`} className="fas fa-search text-white text-decoration-none btn-prueba d-flex align-items-center justify-content-center bg-primary"></a>
+                    <a href={`/search?${submit()}`} className="fas fa-search text-white text-decoration-none btn-filter d-flex align-items-center justify-content-center bg-primary"></a>
                 </div>
             </div>
         </>
