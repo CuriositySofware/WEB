@@ -24,15 +24,15 @@ export default function AppRouter() {
   const { state, dispatch } = useAuth();
 
   useEffect(() => {
-    console.log(state.token);
     if (state && state.token) {
       userInfo(state.token).then((result) => {
         if (result.ok) {
           dispatch({ type: "userInfo", payload: result.user });
+        } else {
+          dispatch({ type: "notLoading" });
         }
       });
     } else {
-      console.log("holi");
       dispatch({ type: "notLoading" });
     }
   }, []);
