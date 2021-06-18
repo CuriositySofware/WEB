@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default function Select({ museums = [], onSelect = (e) => e }) {
   return (
-    <div className="select">
+    <div className="select input-container fullWidth">
       <span className="label">Ubicación</span>
       <div className="select__container">
         <select

@@ -2,8 +2,6 @@
   -webkit-column-count: 4;
   -moz-column-count: 4;
   column-count: 4;
- 
-
   -webkit-column-gap: 0.5vw;
   -moz-column-gap: 0.5vw;
   column-gap: 1vw;
@@ -19,7 +17,7 @@
       border: 0.25vw solid $primary;
       border-radius: 0.5vw;
       background-color: $soft-primary;
-      
+      cursor: pointer;
 
       .masonry-img {
         padding: 1.5em 0;
@@ -77,7 +75,6 @@
           text-overflow: ellipsis;
           overflow: hidden;
         }
-
       }
 
       &:hover {
