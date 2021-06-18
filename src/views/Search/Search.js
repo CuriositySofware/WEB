@@ -27,8 +27,6 @@ export default function Search() {
     page: query.get("page"),
   });
   const [activePage, setactivePage] = useState(1);
-  const [page, setPage] = React.useState(1);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [loading, setloading] = useState(false);
   const [pristine, setpristine] = useState(true);
 
@@ -67,7 +65,7 @@ export default function Search() {
           </div>
         )}
         {loading ? (
-          <div className="loader-container">
+          <div className="loader-container" style={{marginTop: "20vh"}}>
             <Loader
               type="Circles"
               color="#795933"

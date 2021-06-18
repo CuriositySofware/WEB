@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAdmin } from "../context/adminContext";
+import { useAuth } from "../context/authContext";
 
 export default function MenuBar({ openMenu = false, setOpenMenu }) {
   const {
     state: { authenticated },
     dispatch,
-  } = useAdmin();
+  } = useAuth();
 
   const logout = () => {
     setOpenMenu(false);

@@ -1,24 +1,49 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import Input from "../../components/Input";
-import { useAdmin } from "../../context/adminContext";
+import { useAuth } from "../../context/authContext";
+import Loader from "react-loader-spinner";
+import { loginHandler } from "../../services/users";
 
 export default function Login() {
   const [fields, setFields] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const history = useHistory();
+  const [spinner, showSpinner] = useState(false);
   const [error, setError] = useState(false);
-  const { dispatch } = useAdmin();
+  const { dispatch } = useAuth();
 
   const handleLoginSubmit = (e) => {
     e?.preventDefault();
-    if (fields.username === "admin" && fields.password === "admin") {
-      dispatch({ type: "login" });
-      history.push("applications");
+    let _error = true;
+
+    if (!fields.email || !fields.password) {
+      setError("Información inválida. Todos los campos son necesarios");
     } else {
-      setError(true);
+      _error = false;
+      setError("");
+    }
+
+    if (!_error) {
+      showSpinner(true);
+      loginHandler(fields).then((res) => {
+        if (res.ok) {
+          // setSuccess(res.message);
+          dispatch({
+            type: "login",
+            payload: res,
+          });
+          history.push("/home")
+
+          setError("");
+        } else {
+          setError(res.message);
+          // setSuccess("");
+        }
+        showSpinner(false);
+      });
     }
   };
   return (
@@ -26,11 +51,12 @@ export default function Login() {
       <form className="login__container" onSubmit={handleLoginSubmit}>
         <i className="fas fa-sign-in-alt"></i>
         <Input
-          placeholder="Usuario"
-          name="username"
+          placeholder="Email"
+          name="email"
           fullWidth
           fields={fields}
           setfields={setFields}
+          type="email"
           submit={handleLoginSubmit}
         />
         <Input
@@ -42,15 +68,21 @@ export default function Login() {
           type="password"
           submit={handleLoginSubmit}
         />
-        {error && (
-          <span className="login__container__error">
-            Credenciales inválidas
-          </span>
+        {error && <span className="login__container__error">{error}</span>}
+        {spinner && (
+          <Loader
+            type="Circles"
+            color="#795933"
+            height={100}
+            width={100}
+            visible={true}
+          />
         )}
-
-        <button className="login__button" type="submit">
-          Ingresar
-        </button>
+        {!spinner && (
+          <button className="login__button" type="submit">
+            Ingresar
+          </button>
+        )}
       </form>
     </div>
   );

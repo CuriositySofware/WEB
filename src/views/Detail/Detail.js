@@ -65,11 +65,7 @@ export default function Detail() {
             </div>
             <div className="modal-body modal-img-body d-flex justify-content-center">
               {imageLoaded ? (
-                <img
-                  src={imageLoaded}
-                  data-bs-toggle="modal"
-                  data-bs-target={`img-modal`}
-                />
+                <img src={imageLoaded} />
               ) : (
                 <i className="far fa-image" />
               )}

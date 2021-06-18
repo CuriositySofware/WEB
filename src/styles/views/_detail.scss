@@ -59,7 +59,7 @@
   }
   img {
     width: 100%;
-
+    cursor: pointer;
     object-fit: cover;
   }
 
@@ -72,5 +72,6 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-top: 20rem;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
 }

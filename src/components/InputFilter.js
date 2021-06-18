@@ -7,19 +7,19 @@ export default function InputFilter(props) {
     setfields,
     name,
     fields,
-    empty,
-    size,
+    //  empty,
+    //  size,
     submit,
-    textarea,
+    //  textarea,
     text,
-    fullWidth,
+    //  fullWidth,
     onFocus,
     onBlur,
     required,
     placeholder = "Busqueda",
     ...restProps
   } = props;
-    
+
   const handleOnChange = ({ target }) => {
     setfields({
       ...fields,
@@ -27,24 +27,26 @@ export default function InputFilter(props) {
     });
   };
   return (
-      <div className="input-filter">
-          <label className={`input-filter-label text-primary fw-bold`}>{label && `${label}:`}</label>
-          <input 
-              type={text ?? "text"}
-              placeholder={placeholder}
-              className="input-filter-box form-control border-0" 
-              aria-label={placeholder}
-              name={name}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              required={required ?? false}
-              autoComplete="off"
-              onChange={(e) => handleOnChange(e)}
-              onKeyDown={(e) => e.key === "Enter" && submit()}
-              {...restProps}
-          />
-      </div>
-)
+    <div className="input-filter">
+      <label className={`input-filter-label text-primary fw-bold`}>
+        {label && `${label}:`}
+      </label>
+      <input
+        type={text ?? "text"}
+        placeholder={placeholder}
+        className="input-filter-box form-control border-0"
+        aria-label={placeholder}
+        name={name}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        required={required ?? false}
+        autoComplete="off"
+        onChange={(e) => handleOnChange(e)}
+        onKeyDown={(e) => e.key === "Enter" && submit()}
+        {...restProps}
+      />
+    </div>
+  );
 }
 
 InputFilter.propTypes = {

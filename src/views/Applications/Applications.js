@@ -5,6 +5,7 @@ import Application from "../../components/Application";
 import { search } from "../../services/search";
 
 export default function Applications() {
+ 
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
 

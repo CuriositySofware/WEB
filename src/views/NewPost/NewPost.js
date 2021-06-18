@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
 import { createArtifact, getMuseums } from "../../services/search";
+import { useAuth } from "../../context/authContext";
 
 export default function NewPost() {
   const [fields, setfields] = useState({
@@ -11,6 +12,10 @@ export default function NewPost() {
     location: "",
     description: "",
   });
+
+  const {
+    state: { token },
+  } = useAuth();
 
   const [museums, setMuseums] = useState([]);
   const [error, setError] = useState("");
@@ -36,7 +41,7 @@ export default function NewPost() {
       return;
     }
 
-    const response = await createArtifact(fields);
+    const response = await createArtifact(fields, token);
     const jsonResponse = await response.json();
 
     if (!jsonResponse.ok) {

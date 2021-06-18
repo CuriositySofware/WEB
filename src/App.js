@@ -1,14 +1,14 @@
 import "./App.css";
 import "./styles/styles.scss";
 import AppRouter from "./AppRouter";
-import { AdminProvider } from "./context/adminContext";
+import { AuthProvider } from "./context/authContext";
 
 function App() {
   return (
     <>
-      <AdminProvider>
+      <AuthProvider>
         <AppRouter />
-      </AdminProvider>
+      </AuthProvider>
     </>
   );
 }
