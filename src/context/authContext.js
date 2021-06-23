@@ -3,12 +3,14 @@ import { createContext, useContext, useReducer } from "react";
 const AdminContext = createContext();
 
 const manageAuth = (state, result) => {
+  console.log(result);
   if (result.ok) {
     localStorage.setItem("token", result.token);
     return {
       ...state,
       first_name: result.user.first_name,
       last_name: result.user.last_name,
+      email: result.user.email,
       type: result.user.type,
       token: result.token,
       isLoggedIn: true,
@@ -23,6 +25,7 @@ const manageInfo = (state, result) => {
     ...state,
     first_name: result.first_name,
     last_name: result.last_name,
+    email: result.email,
     type: result.type,
     isLoggedIn: true,
     isLoading: false,
@@ -44,6 +47,7 @@ const authReducer = (state, action) => {
         token: "",
         first_name: "",
         last_name: "",
+        email: "",
         type: "",
         isLoggedIn: false,
         isLoading: false,

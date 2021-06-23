@@ -21,6 +21,7 @@ import PrivateRoute from "./PrivateRoute";
 import { useAuth } from "./context/authContext";
 import { userInfo } from "./services/users";
 import Loader from "react-loader-spinner";
+import UserInfo from "./views/userInfo/userInfo";
 
 export default function AppRouter() {
   const { state, dispatch } = useAuth();
@@ -62,6 +63,14 @@ export default function AppRouter() {
           <PrivateRoute
             path="/publish"
             component={NewPost}
+            type={state.type ? state.type : ""}
+            redirectTo="/login"
+            isLoggedIn={state.isLoggedIn}
+            mustBeAdmin={false}
+          />
+          <PrivateRoute
+            path="/user_info"
+            component={UserInfo}
             type={state.type ? state.type : ""}
             redirectTo="/login"
             isLoggedIn={state.isLoggedIn}
