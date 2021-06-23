@@ -43,9 +43,10 @@ export default function UserInfo() {
       editUserHandler(fields, token).then((res) => {
         if (res.ok) {
           setSuccess(res.message);
+ 
           dispatch({
             type: "userInfo",
-            payload: res,
+            payload: res.user,
           });
           setEdit(false);
           setError("");
