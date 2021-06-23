@@ -1,0 +1,54 @@
+.userInfo {
+  min-height: calc(100vh - (8 * 0.7rem) - 6rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    width: 70%;
+    max-width: 40rem;
+    padding: 2em 0;
+    min-height: 20rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px 0px rgba($gray, 0.75);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 5vw 0;
+
+    & > * + * {
+      margin-top: 1.4em !important;
+    }
+
+    i {
+      font-size: 4em;
+      color: $primary;
+    }
+
+    &__error {
+      color: $danger !important;
+      font-weight: 900;
+    }
+    &__success {
+      color: rgb(10, 145, 68) !important;
+      font-weight: 900;
+    }
+
+    button {
+      width: 40%;
+      padding: 0.4em 0;
+
+      font-size: 1.3em;
+      background: $primary;
+      color: $light;
+      font-weight: 900;
+    }
+  }
+}
+
+@include breakpoint("medium") {
+  .userInfo {
+    font-size: 1.3rem;
+    min-height: calc(100vh - 8rem - (6 * 1.4rem));
+  }
+}

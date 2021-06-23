@@ -59,8 +59,8 @@ export default function UserInfo() {
   };
 
   return (
-    <div className="register">
-      <form className="register__container" onSubmit={handleEditSubmit}>
+    <div className="userInfo">
+      <form className="userInfo__container" onSubmit={handleEditSubmit}>
         <i className="fas fa-address-card"></i>
         <Input
           placeholder="Nombre"
@@ -97,10 +97,10 @@ export default function UserInfo() {
           defaultValue={email}
         />
 
-        {error && <span className="register__container__error">{error}</span>}
+        {error && <span className="userInfo__container__error">{error}</span>}
 
         {success && (
-          <span className="register__container__success">{success}</span>
+          <span className="userInfo__container__success">{success}</span>
         )}
         {spinner && (
           <Loader
@@ -113,7 +113,7 @@ export default function UserInfo() {
         )}
         {!spinner && !edit && (
           <button
-            className="register__button"
+            className="userInfo__button"
             type="button"
             onClick={() => setEdit(true)}
           >
@@ -121,7 +121,7 @@ export default function UserInfo() {
           </button>
         )}
         {edit && (
-          <button className="register__button" type="submit">
+          <button className="userInfo__button" type="submit">
             Guardar
           </button>
         )}
