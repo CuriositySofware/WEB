@@ -26,6 +26,11 @@ export default function Header() {
         <div className="links-container">
           {isLoggedIn ? (
             <>
+              <Link to="/user_info" className="link">
+                <span>
+                  <i className="fas fa-user"></i>Usuario
+                </span>
+              </Link>
               <Link to="/publish" className="link">
                 <span>
                   <i className="fas fa-info-circle"></i>Publicar
