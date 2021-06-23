@@ -62,3 +62,28 @@ export const userInfo = async (token) => {
     return { ok: false, message: "Ha ocurrido un error solicitando la data" };
   }
 };
+
+export const editUserHandler = async (
+  { email, nombre, apellido, type },
+  token
+) => {
+  try {
+    const response = await fetch(`${API}/users/update/${email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify({
+        first_name: nombre,
+        last_name: apellido,
+        //TODO: hay que cambiar esto
+        type: "visitor",
+      }),
+    });
+    const body = await response.json();
+    return body;
+  } catch {
+    return { ok: false, message: "Ha ocurrido un error solicitando la data" };
+  }
+};

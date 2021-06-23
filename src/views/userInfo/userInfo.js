@@ -2,30 +2,29 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import Input from "../../components/Input";
 import { useAuth } from "../../context/authContext";
-import passValidation, { infoValidation } from "../../services/validations";
+import { infoValidation } from "../../services/validations";
 import Loader from "react-loader-spinner";
-import { registerHandler } from "../../services/users";
+import { editUserHandler } from "../../services/users";
 
 export default function UserInfo() {
-  const [fields, setFields] = useState({
-    nombre: "",
-    apellido: "",
-    email: "",
-  });
   const history = useHistory();
   const [error, setError] = useState("");
   const [edit, setEdit] = useState(false);
   const [success, setSuccess] = useState("");
   const [spinner, showSpinner] = useState(false);
   const {
-    state: { first_name, last_name, email },
+    state: { first_name, last_name, email, token },
     dispatch,
   } = useAuth();
+  const [fields, setFields] = useState({
+    nombre: first_name,
+    apellido: last_name,
+    email,
+  });
   // TODO: importante cambiar el handler register para que tenga mas sentido
-  const handleRegisterSubmit = (e) => {
+  const handleEditSubmit = (e) => {
     e?.preventDefault();
     let _error = true;
-    let _passError = true;
     if (
       !infoValidation({
         nombre: fields.nombre,
@@ -39,17 +38,17 @@ export default function UserInfo() {
       setError("");
     }
 
-    if (!_error && !_passError) {
+    if (!_error) {
       showSpinner(true);
-      registerHandler(fields).then((res) => {
+      editUserHandler(fields, token).then((res) => {
         if (res.ok) {
           setSuccess(res.message);
           dispatch({
-            type: "register",
+            type: "userInfo",
             payload: res,
           });
+          setEdit(false);
           setError("");
-          history.push("/search");
         } else {
           setError(res.message);
           setSuccess("");
@@ -61,7 +60,7 @@ export default function UserInfo() {
 
   return (
     <div className="register">
-      <form className="register__container" onSubmit={handleRegisterSubmit}>
+      <form className="register__container" onSubmit={handleEditSubmit}>
         <i className="fas fa-address-card"></i>
         <Input
           placeholder="Nombre"
@@ -70,9 +69,9 @@ export default function UserInfo() {
           fields={fields}
           required={true}
           setfields={setFields}
-          submit={handleRegisterSubmit}
-          defaultValue={first_name}
+          submit={handleEditSubmit}
           disabled={!edit}
+          defaultValue={first_name}
         />
         <Input
           placeholder="Apellido"
@@ -81,9 +80,9 @@ export default function UserInfo() {
           fields={fields}
           required={true}
           setfields={setFields}
-          submit={handleRegisterSubmit}
-          defaultValue={last_name}
+          submit={handleEditSubmit}
           disabled={!edit}
+          defaultValue={last_name}
         />
         <Input
           placeholder="Correo electrónico"
@@ -93,9 +92,9 @@ export default function UserInfo() {
           fields={fields}
           required={true}
           setfields={setFields}
-          submit={handleRegisterSubmit}
-          defaultValue={email}
+          submit={handleEditSubmit}
           disabled
+          defaultValue={email}
         />
 
         {error && <span className="register__container__error">{error}</span>}
