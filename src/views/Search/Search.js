@@ -65,7 +65,7 @@ export default function Search() {
           </div>
         )}
         {loading ? (
-          <div className="loader-container">
+          <div className="loader-container" style={{marginTop: "20vh"}}>
             <Loader
               type="Circles"
               color="#795933"

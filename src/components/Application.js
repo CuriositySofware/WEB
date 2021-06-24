@@ -1,18 +1,24 @@
 import React, { useState } from "react";
+import { useAuth } from "../context/authContext";
 import { updateArtifact } from "../services/search";
 
 export default function Application({ app, removeApplication, idx }) {
+  const {
+    state: { token },
+  } = useAuth();
   const [openDetails, setOpenDetails] = useState(false);
 
   const changeStatus = (status) => {
-    updateArtifact(app.id.value, status);
+    updateArtifact(app, status, token);
     removeApplication(idx);
     setOpenDetails(false);
   };
   return (
     <>
       <div
-        className={`application d-flex align-items-center ${openDetails ? "rotate" : ""}`}
+        className={`application d-flex align-items-center ${
+          openDetails ? "rotate" : ""
+        }`}
         onClick={() => setOpenDetails(!openDetails)}
       >
         <i className="fas fa-clipboard-list"></i>

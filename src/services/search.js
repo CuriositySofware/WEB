@@ -21,11 +21,12 @@ export const getArtifactById = async (id) => {
   return response;
 };
 
-export const createArtifact = async (fields) => {
+export const createArtifact = async (fields, token) => {
   const response = await fetch(`${API}/create`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
+      authorization: token,
     },
     body: JSON.stringify(fields),
   });
@@ -43,13 +44,14 @@ export const getMuseums = async () => {
     .then((resp) => resp.result);
 };
 
-export const updateArtifact = async (id, action) => {
-  return fetch(`${API}/update/${id}`, {
+export const updateArtifact = async (app, action, token) => {
+  return fetch(`${API}/update/${app.id.value}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",
+      Authorization: token,
     },
-    body: JSON.stringify({ action }),
+    body: JSON.stringify({ info: app, action }),
   })
     .then((resp) => resp.json())
     .then((resp) => console.log(resp));

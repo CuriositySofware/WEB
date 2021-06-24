@@ -11,7 +11,7 @@ export default function Filter() {
         place: "",
     });
 
-    const [empty, setempty] = useState(false);
+    const [empty] = useState(false);
   
     const submit = () => {
         let filterQuery = "";

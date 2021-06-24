@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router";
 import PropTypes from "prop-types";
 import { getImage } from "../services/search";
 import Loader from "react-loader-spinner";
@@ -33,7 +32,11 @@ export default function Card({ infoCard = {} }) {
   }, []);
 
   return (
-    <div className="masonry-item" data-bs-toggle="modal" data-bs-target={`#modal-${id.value}`}>
+    <div
+      className="masonry-item"
+      data-bs-toggle="modal"
+      data-bs-target={`#modal-${id.value}`}
+    >
       <div className="masonry-img">
         <ShowImages></ShowImages>
       </div>

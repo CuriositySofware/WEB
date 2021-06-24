@@ -49,7 +49,7 @@ export default function Modal({ infoCard = {} }) {
               className="btn btn-secondary"
               data-bs-dismiss="modal"
             >
-              Close
+              Cerrar
             </button>
             <a className="btn btn-primary" href={`/search/${id.value}`}>
               Ver más
