@@ -18,7 +18,7 @@ export default function Search() {
   let query = useQuery();
 
   const [pages, setpages] = useState([]);
-  const [params, setparams] = useState({
+  const [params] = useState({
     title: query.get("title"),
     author: query.get("author"),
     period: query.get("period"),
@@ -27,8 +27,6 @@ export default function Search() {
     page: query.get("page"),
   });
   const [activePage, setactivePage] = useState(1);
-  const [page, setPage] = React.useState(1);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [loading, setloading] = useState(false);
   const [pristine, setpristine] = useState(true);
 
@@ -83,9 +81,6 @@ export default function Search() {
                 {row.map((card) => (
                   <Card infoCard={card} key={card.id.value} />
                 ))}
-                {row.map((card) => (
-                  <Modal infoCard={card} key={card.id.value} />
-                ))}
               </div>
             ))}
           </div>
@@ -98,6 +93,13 @@ export default function Search() {
           />
         )}
       </div>
+      {chunk(pages[activePage - 1], 4).map((row, idx) => (
+        <div className="masonry" key={idx}>
+          {row.map((card) => (
+            <Modal infoCard={card} key={card.id.value} />
+          ))}
+        </div>
+      ))}
     </>
   );
 }

@@ -1,71 +1,11 @@
 .detail-container {
   // min-height: calc(100vh - (8 * 0.7rem) - 6rem);
-  display: flex;
-  flex-direction: column;
-  width: 70%;
+  width: 90%;
   margin: 6rem auto;
   border-radius: 5px;
   font-size: 1rem;
   padding: 4em 1.5em;
   box-shadow: 0px 0px 10px 0px rgba($gray, 0.75);
-
-  .image-container {
-    width: 100%;
-    font-size: 10em;
-    color: $gray;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .info-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    h2 {
-      color: $primary;
-      text-align: center;
-      font-size: clamp(1.9rem, 5vw, 2.3rem);
-      font-weight: 700;
-      margin: 0.7em 0;
-    }
-
-    & > * + * {
-      margin-top: 1em;
-    }
-
-    .info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      span {
-        &:nth-child(1) {
-          color: $primary;
-          font-size: clamp(1.6rem, 4.5vw, 2.1rem);
-          font-weight: 700;
-          margin-bottom: 0.2rem;
-        }
-
-        &:nth-child(2) {
-          color: $dark;
-          font-size: clamp(1.5rem, 4vw, 2rem);
-          font-weight: 300;
-          line-height: 1.5;
-        }
-      }
-    }
-  }
-  img {
-    width: 100%;
-
-    object-fit: cover;
-  }
-
-  @include breakpoint("medium-large") {
-    flex-direction: row;
-  }
 }
 
 .loader-detail {
@@ -73,4 +13,37 @@
   width: 100%;
   justify-content: center;
   margin-top: 20rem;
+}
+.not-found {
+  font-size: 200px;
+}
+.detail-header {
+  color: $primary;
+  text-align: center;
+  font-size: clamp(1.9rem, 5vw, 2.3rem);
+  font-weight: 700;
+  margin: 0.7em 0; 
+}
+.detail-title {
+  color: $primary;
+  font-size: clamp(1.6rem, 4.5vw, 2.1rem);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.detail-text {
+  color: $dark;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 300;
+  line-height: 1.5;
+}
+.detail-desc {
+  color: $dark;
+  font-size: clamp(1.0rem, 2vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.25;
+}
+.detail-button {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 300;
+  line-height: 1.5;
 }
