@@ -63,10 +63,7 @@ export const userInfo = async (token) => {
   }
 };
 
-export const editUserHandler = async (
-  { email, nombre, apellido, type },
-  token
-) => {
+export const editUserHandler = async ({ email, nombre, apellido }, token) => {
   try {
     const response = await fetch(`${API}/users/update/${email}`, {
       method: "PUT",
@@ -77,8 +74,6 @@ export const editUserHandler = async (
       body: JSON.stringify({
         first_name: nombre,
         last_name: apellido,
-        //TODO: hay que cambiar esto
-        type: "visitor",
       }),
     });
     const body = await response.json();

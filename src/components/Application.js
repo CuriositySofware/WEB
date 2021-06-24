@@ -11,39 +11,40 @@ export default function Application({ app, removeApplication, idx }) {
   const [museums, setMuseums] = useState([]);
   const [edit, setEdit] = useState(false);
   const [fields, setFields] = useState({
-    title: "",
-    author: "",
-    material: "",
-    location: 0,
-    description: "",
+    title: app.labelArtifact.value,
+    author: app.labelCreator.value,
+    material: app.labelMaterial.value,
+    location: "",
+    num_location: 0,
+    description: app.note.value,
   });
   const changeStatus = (status) => {
-    updateArtifact(app, status, token);
+    updateArtifact(app, status, fields, token);
     removeApplication(idx);
     setOpenDetails(false);
   };
 
-  const searchIndex = (museumsList) => {
+  const searchIndex = (museumsList, toSearch) => {
     let i = 0;
     for (i = 0; i < museumsList.length; i++) {
-      if (museumsList[i].label === app.labelKeeper.value) {
+      if (museumsList[i].label === toSearch) {
         break;
       }
     }
-
     return i;
   };
   const execMuseumsRequest = async () => {
     const result = await getMuseums();
-    console.log(result);
-    const index = searchIndex(result);
-    setMuseums(result);
+
+    const index = searchIndex(result, app.labelKeeper.value);
     setFields((prevState) => {
       return {
         ...prevState,
-        location: index,
+        num_location: index,
+        location: result[index].museum,
       };
     });
+    setMuseums(result);
   };
 
   useEffect(() => {
@@ -66,7 +67,12 @@ export default function Application({ app, removeApplication, idx }) {
             <div className="column">
               <h4 className="label">Titulo:</h4>
               <input
-                defaultValue={app.labelArtifact.value}
+                value={fields.title}
+                onChange={(event) => {
+                  setFields((prevState) => {
+                    return { ...prevState, title: event.target.value };
+                  });
+                }}
                 disabled={!edit}
               ></input>
               {/*   <p>{app.labelArtifact.value}</p> */}
@@ -74,7 +80,12 @@ export default function Application({ app, removeApplication, idx }) {
             <div className="column">
               <h4 className="label">Autor:</h4>
               <input
-                defaultValue={app.labelCreator.value}
+                value={fields.author}
+                onChange={(event) => {
+                  setFields((prevState) => {
+                    return { ...prevState, author: event.target.value };
+                  });
+                }}
                 disabled={!edit}
               ></input>
               {/*    <p>{app.labelCreator.value}</p> */}
@@ -84,14 +95,31 @@ export default function Application({ app, removeApplication, idx }) {
             <div className="column">
               <h4 className="label">Material:</h4>
               <input
-                defaultValue={app.labelMaterial.value}
+                value={fields.material}
+                onChange={(event) => {
+                  setFields((prevState) => {
+                    return { ...prevState, material: event.target.value };
+                  });
+                }}
                 disabled={!edit}
               ></input>
               {/* <p>{app.labelMaterial.value}</p> */}
             </div>
             <div className="column">
               <h4 className="label">Ubicacion:</h4>
-              <select disabled={!edit} defaultValue={fields.location}>
+              <select
+                disabled={!edit}
+                value={fields.num_location}
+                onChange={(event) => {
+                  setFields((prevState) => {
+                    return {
+                      ...prevState,
+                      num_location: event.target.value,
+                      location: museums[event.target.value].museum,
+                    };
+                  });
+                }}
+              >
                 {museums.map((museum, index) => (
                   <option value={index} key={index}>
                     {museum.label}
@@ -106,7 +134,7 @@ export default function Application({ app, removeApplication, idx }) {
               <h4 className="label">Periodo:</h4>
               <input
                 defaultValue={app.perios_l?.value || "Desconocido"}
-                disabled={!edit}
+                disabled
               ></input>
               {/*   <p>{app.perios_l?.value || "Desconocido"}</p> */}
             </div>
@@ -117,7 +145,12 @@ export default function Application({ app, removeApplication, idx }) {
               <h4 className="label">Descripcion:</h4>
               <textarea
                 rows={5}
-                defaultValue={app.note.value}
+                value={fields.description}
+                onChange={(event) => {
+                  setFields((prevState) => {
+                    return { ...prevState, description: event.target.value };
+                  });
+                }}
                 disabled={!edit}
               ></textarea>
               {/*   <p>{app.note.value}</p> */}

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
 import Input from "../../components/Input";
 import { useAuth } from "../../context/authContext";
 import { infoValidation } from "../../services/validations";
@@ -7,7 +6,6 @@ import Loader from "react-loader-spinner";
 import { editUserHandler } from "../../services/users";
 
 export default function UserInfo() {
-  const history = useHistory();
   const [error, setError] = useState("");
   const [edit, setEdit] = useState(false);
   const [success, setSuccess] = useState("");
@@ -43,7 +41,7 @@ export default function UserInfo() {
       editUserHandler(fields, token).then((res) => {
         if (res.ok) {
           setSuccess(res.message);
- 
+
           dispatch({
             type: "userInfo",
             payload: res.user,

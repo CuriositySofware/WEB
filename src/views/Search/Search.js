@@ -18,7 +18,7 @@ export default function Search() {
   let query = useQuery();
 
   const [pages, setpages] = useState([]);
-  const [params, setparams] = useState({
+  const [params] = useState({
     title: query.get("title"),
     author: query.get("author"),
     period: query.get("period"),

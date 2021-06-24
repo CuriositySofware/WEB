@@ -44,14 +44,14 @@ export const getMuseums = async () => {
     .then((resp) => resp.result);
 };
 
-export const updateArtifact = async (app, action, token) => {
+export const updateArtifact = async (app, action, fields, token) => {
   return fetch(`${API}/update/${app.id.value}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",
       Authorization: token,
     },
-    body: JSON.stringify({ info: app, action }),
+    body: JSON.stringify({ info: app, newInfo: fields, action }),
   })
     .then((resp) => resp.json())
     .then((resp) => console.log(resp));
