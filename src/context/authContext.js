@@ -3,7 +3,7 @@ import { createContext, useContext, useReducer } from "react";
 const AdminContext = createContext();
 
 const manageAuth = (state, result) => {
-  console.log(result);
+
   if (result.ok) {
     localStorage.setItem("token", result.token);
     return {
