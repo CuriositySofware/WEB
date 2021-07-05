@@ -28,7 +28,7 @@ export default function Application({ app, removeApplication, idx }) {
         <div className="details d-flex">
           <div className="row">
             <div className="column">
-              <h4 className="label">Titulo:</h4>
+              <h4 className="label">Título:</h4>
               <p>{app.labelArtifact.value}</p>
             </div>
             <div className="column">
@@ -42,20 +42,20 @@ export default function Application({ app, removeApplication, idx }) {
               <p>{app.labelMaterial.value}</p>
             </div>
             <div className="column">
-              <h4 className="label">Ubicacion:</h4>
+              <h4 className="label">Ubicación:</h4>
               <p>{app.labelKeeper.value}</p>
             </div>
           </div>
           <div className="row row--fullw">
             <div className="column">
-              <h4 className="label">Periodo:</h4>
+              <h4 className="label">Período:</h4>
               <p>{app.perios_l?.value || "Desconocido"}</p>
             </div>
           </div>
 
           <div className="row row--fullw">
             <div className="column">
-              <h4 className="label">Descripcion:</h4>
+              <h4 className="label">Descripción:</h4>
               <p>{app.note.value}</p>
             </div>
           </div>
