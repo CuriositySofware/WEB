@@ -3,25 +3,25 @@
   font-size: 0.7rem;
   width: 100vw;
   padding: 0 5em;
-  background: $light;
+  background: $primary;
   display: flex;
   align-items: center;
   box-shadow: 0px 0px 1em 0px $light;
   justify-content: space-between;
-  color: $primary;
+  color: $light;
   position: relative;
   z-index: 5;
-  border-bottom: .5vw solid $primary;
 
   h1 {
     font-weight: 900;
     font-size: 2.8em;
+    color: $light;
   }
 
   span {
     font-weight: 700;
     font-size: 1.7em;
-    color: $secondary;
+    color: $light;
   }
 
   .link {
@@ -37,15 +37,15 @@
 
     span {
       font-size: 1.7em;
-      color: $secondary;
+      color: $light;
       cursor: pointer;
       i {
         margin-right: 5px;
-        color: $primary;
+        color: $light;
       }
 
       &:hover {
-        color: $primary !important;
+        color: $light !important;
       }
     }
   }

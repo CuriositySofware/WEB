@@ -73,7 +73,7 @@ export default function AppRouter() {
         <div style={{ margin: "auto" }}>
           <Loader
             type="Circles"
-            color="#795933"
+            color="#233d4d"
             height={150}
             width={150}
             visible={true}

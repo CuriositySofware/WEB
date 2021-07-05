@@ -68,7 +68,7 @@ export default function Search() {
           <div className="loader-container" style={{marginTop: "20vh"}}>
             <Loader
               type="Circles"
-              color="#795933"
+              color="#233d4d"
               height={80}
               width={80}
               visible={true}

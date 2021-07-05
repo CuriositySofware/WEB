@@ -16,7 +16,7 @@ export default function Input(props) {
     onFocus,
     onBlur,
     required,
-    placeholder = "Busqueda",
+    placeholder = "Búsqueda",
     ...restProps
   } = props;
   const handleOnChange = ({ target }) => {

@@ -10,7 +10,7 @@ export default function Card({ infoCard = {} }) {
 
   const ShowImages = () => {
     if (imageLoaded === "") {
-      return <Loader type="Circles" color="#795933" visible={true} />;
+      return <Loader type="Circles" color="#233d4d" visible={true} />;
     } else if (imageLoaded === "404") {
       return <i className="far fa-image"></i>;
     } else {

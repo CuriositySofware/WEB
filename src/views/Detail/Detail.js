@@ -53,7 +53,7 @@ export default function Detail() {
         <div className="loader-detail">
           <Loader
             type="Circles"
-            color="#795933"
+            color="#233d4d"
             height={100}
             width={100}
             visible={true}
@@ -62,7 +62,7 @@ export default function Detail() {
       ) : (
         <>
           <button className="goback-button" onClick={() => history.goBack()}>
-            Go Back
+            Regresar
           </button>
           <div className="detail-container">
             <div className="container">
@@ -86,9 +86,9 @@ export default function Detail() {
                     <div className="d-flex my-2 justify-content-center">
                       <Link
                         to={`/zoomimg?imgsrc=${imageLoaded}&artname=${artifact.artifactLabel}`}
-                        className="btn btn-primary detail-button btn-block w-50"
+                        className="btn btn-secondary detail-button btn-block"
                       >
-                        Ver Detalle
+                        Zoom de la imagen
                       </Link>
                     </div>
                   </div>
@@ -111,16 +111,16 @@ export default function Detail() {
                 <p className="detail-title">Material</p>
                 <p className="detail-text">{artifact.materialLabel}</p>
 
-                <p className="detail-title">Ubicacion</p>
+                <p className="detail-title">Ubicación</p>
                 <p className="detail-text">{artifact.keeperLabel}</p>
 
-                <p className="detail-title">Periodo</p>
+                <p className="detail-title">Período</p>
                 <p className="detail-text">
                   {artifact.period_l || "Desconocido"}
                 </p>
               </div>
               <div className="col-6">
-                <p className="detail-title text-center">Descripcion</p>
+                <p className="detail-title text-center">Descripción</p>
                 <p className="detail-desc">{artifact.note}</p>
               </div>
             </div>

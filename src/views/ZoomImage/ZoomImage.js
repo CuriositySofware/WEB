@@ -19,7 +19,7 @@ export default function ZoomImage() {
   return (
     <>
       <button className="goback-button" onClick={() => history.goBack()}>
-        Go Back
+        Regresar
       </button>
       <h2 className="detail-header">{params.artname}</h2>
       <div className="img-zoom-container container d-flex">

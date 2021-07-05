@@ -55,7 +55,7 @@ export default function Filter() {
                         submit={submit}
                     />
                     <InputFilter
-                        label="Periodo"
+                        label="Período"
                         name="period"
                         setfields={setfields}
                         fields={fields}
@@ -63,14 +63,14 @@ export default function Filter() {
                         submit={submit}
                     />
                     <InputFilter
-                        label="Titulo"
+                        label="Título"
                         name="title"
                         setfields={setfields}
                         fields={fields}
                         empty={empty}
                         submit={submit}
                     />
-                    <a href={`/search?${submit()}`} className="fas fa-search text-white text-decoration-none btn-filter d-flex align-items-center justify-content-center bg-primary"></a>
+                    <a href={`/search?${submit()}`} className="fas fa-search text-white text-decoration-none btn-filter d-flex align-items-center justify-content-center bg-secondary"></a>
                 </div>
             </div>
         </>
