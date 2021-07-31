@@ -51,7 +51,7 @@ export default function Login() {
       <form className="login__container" onSubmit={handleLoginSubmit}>
         <i className="fas fa-sign-in-alt"></i>
         <Input
-          placeholder="Email"
+          placeholder="Correo electrónico"
           name="email"
           fullWidth
           fields={fields}
@@ -72,7 +72,7 @@ export default function Login() {
         {spinner && (
           <Loader
             type="Circles"
-            color="#795933"
+            color="#233d4d"
             height={100}
             width={100}
             visible={true}

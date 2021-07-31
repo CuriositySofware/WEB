@@ -2,6 +2,7 @@
 @import "./utils/variables";
 @import "./utils/mixins";
 @import "./utils/base";
+@import "./utils/buttons";
 
 @import "~bootstrap/scss/bootstrap.scss";
 
@@ -12,8 +13,10 @@
 @import "./views/applications";
 @import "./views/login";
 @import "./views/register";
-@import "./views/prueba";
+//@import "./views/prueba";
 @import "./views/userInfo";
+@import "./views/zoomimg";
+
 // Shared
 @import "./shared/header";
 @import "./shared/footer";
@@ -22,6 +25,7 @@
 @import "./components/input";
 @import "./components/card";
 @import "./components/carousel";
+@import "./components/masonry";
 @import "./components/modal";
 @import "./components/pagination";
 @import "./components/filter";
@@ -30,4 +34,3 @@
 @import "./components/application";
 @import "./components/badge";
 @import "./components/menuBar";
-

@@ -16,7 +16,7 @@ export default function Input(props) {
     onFocus,
     onBlur,
     required,
-    placeholder,
+    placeholder = "Búsqueda",
     ...restProps
   } = props;
   const handleOnChange = ({ target }) => {
@@ -24,7 +24,7 @@ export default function Input(props) {
       ...fields,
       [target.name]: target.value,
     });
-  };  
+  };
   return (
     <div
       className={`input-container ${

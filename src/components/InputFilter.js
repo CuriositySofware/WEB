@@ -28,7 +28,7 @@ export default function InputFilter(props) {
   };
   return (
     <div className="input-filter">
-      <label className={`input-filter-label text-primary fw-bold`}>
+      <label className={`input-filter-label text-secondary fw-bold`}>
         {label && `${label}:`}
       </label>
       <input

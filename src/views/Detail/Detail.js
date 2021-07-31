@@ -3,12 +3,15 @@ import Loader from "react-loader-spinner";
 import { useParams } from "react-router";
 import { getArtifactById } from "../../services/search";
 import { getImage } from "../../services/search";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Detail() {
   const { id } = useParams();
   const [artifact, setartifact] = useState({});
   const [loading, setloading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState("");
+
+  let history = useHistory();
 
   const getArtifact = async () => {
     try {
@@ -43,86 +46,88 @@ export default function Detail() {
     getArtifact();
     // eslint-disable-next-line
   }, []);
+
   return (
     <>
-      <div
-        className="modal fade"
-        id={`img-modal`}
-        aria-labelledby={`img-modal`}
-        data-bs-keyboard="false"
-        tabIndex="-1"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-lg modal-dialog-centered">
-          <div className="modal-content">
-            <div className="modal-header">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body modal-img-body d-flex justify-content-center">
-              {imageLoaded ? (
-                <img src={imageLoaded} />
-              ) : (
-                <i className="far fa-image" />
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
       {loading ? (
         <div className="loader-detail">
           <Loader
             type="Circles"
-            color="#795933"
+            color="#233d4d"
             height={100}
             width={100}
             visible={true}
           />
         </div>
       ) : (
-        <div className="detail-container">
-          <div className="image-container">
-            {imageLoaded ? (
-              <>
-                <img
-                  src={imageLoaded}
-                  data-bs-toggle="modal"
-                  data-bs-target={`#img-modal`}
-                />
-              </>
-            ) : (
-              <i className="far fa-image" />
-            )}
+        <>
+          <button className="goback-button" onClick={() => history.goBack()}>
+            Regresar
+          </button>
+          <div className="detail-container">
+            <div className="container">
+              <div className="row">
+                <h2 className="detail-header">{artifact.artifactLabel}</h2>
+              </div>
+
+              {imageLoaded ? (
+                <>
+                  <div className="row">
+                    <div className="d-flex justify-content-center">
+                      <img
+                        className="w-50"
+                        src={imageLoaded}
+                        data-bs-toggle="modal"
+                        data-bs-target={`#img-modal`}
+                      />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="d-flex my-2 justify-content-center">
+                      <Link
+                        to={`/zoomimg?imgsrc=${imageLoaded}&artname=${artifact.artifactLabel}`}
+                        className="btn btn-secondary detail-button btn-block"
+                      >
+                        Zoom de la imagen
+                      </Link>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="row">
+                  <div className="d-flex justify-content-center">
+                    <i className="far fa-image w-50 not-found text-center text-gray" />
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="row">
+              <div className="col-6">
+                <p className="detail-title">Autor</p>
+                <p className="detail-text">
+                  {artifact?.authorLabel || "Desconocido"}
+                </p>
+
+                <p className="detail-title">Material</p>
+                <p className="detail-text">{artifact.materialLabel}</p>
+
+                <p className="detail-title">Ubicación</p>
+                <p className="detail-text">{artifact.keeperLabel}</p>
+
+                <p className="detail-title">Período</p>
+                <p className="detail-text">
+                  {artifact.period_l || "Desconocido"}
+                </p>
+              </div>
+              <div className="col-6">
+                <p className="detail-title text-center">Descripción</p>
+                <p className="detail-desc">{artifact.note}</p>
+              </div>
+            </div>
           </div>
-          <div className="info-container">
-            <h2>{artifact.artifactLabel}</h2>
-            <div className="info">
-              <span>Autor</span>
-              <span>{artifact?.authorLabel || "Desconocido"}</span>
-            </div>
-            <div className="info">
-              <span>Material</span>
-              <span>{artifact.materialLabel}</span>
-            </div>
-            <div className="info">
-              <span>Ubicacion</span>
-              <span>{artifact.keeperLabel}</span>
-            </div>
-            <div className="info">
-              <span>Periodo</span>
-              <span>{artifact.period_l || "Desconocido"}</span>
-            </div>
-            <div className="info">
-              <span>Descripcion</span>
-              <span>{artifact.note}</span>
-            </div>
-          </div>
-        </div>
+        </>
       )}
+
     </>
   );
 }

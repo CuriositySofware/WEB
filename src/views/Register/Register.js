@@ -140,7 +140,7 @@ export default function Register() {
         {spinner && (
           <Loader
             type="Circles"
-            color="#795933"
+            color="#233d4d"
             height={100}
             width={100}
             visible={true}

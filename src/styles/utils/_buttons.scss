@@ -1,0 +1,9 @@
+.goback-button {
+    width: 10vw;
+
+    @extend .btn; 
+    @extend .btn-outline-primary;
+    @extend .fs-4; 
+    @extend .ms-4;
+    @extend .mt-4
+}

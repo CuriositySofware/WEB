@@ -14,9 +14,9 @@ import Detail from "./views/Detail/Detail";
 import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
 import NewPost from "./views/NewPost/NewPost";
-import Prueba from "./views/Pruebas/Prueba";
 import Register from "./views/Register/Register";
 import Search from "./views/Search/Search";
+import ZoomImage from "./views/ZoomImage/ZoomImage";
 import PrivateRoute from "./PrivateRoute";
 import { useAuth } from "./context/authContext";
 import { userInfo } from "./services/users";
@@ -50,7 +50,7 @@ export default function AppRouter() {
           <Route exact path="/home" component={() => <Home />} />
           <Route exact path="/search" component={() => <Search />} />
           <Route exact path="/search/:id" component={Detail} />
-          <Route exact path="/prueba" component={() => <Prueba />} />
+          <Route exact path="/zoomimg" component={() => <ZoomImage />} />
           {/*   <Route exact path="/publish" component={NewPost} /> */}
           <PrivateRoute
             path="/applications"
@@ -82,7 +82,7 @@ export default function AppRouter() {
         <div style={{ margin: "auto" }}>
           <Loader
             type="Circles"
-            color="#795933"
+            color="#233d4d"
             height={150}
             width={150}
             visible={true}

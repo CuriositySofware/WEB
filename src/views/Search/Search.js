@@ -68,7 +68,7 @@ export default function Search() {
           <div className="loader-container" style={{marginTop: "20vh"}}>
             <Loader
               type="Circles"
-              color="#795933"
+              color="#233d4d"
               height={80}
               width={80}
               visible={true}
@@ -80,9 +80,6 @@ export default function Search() {
               <div className="masonry" key={idx}>
                 {row.map((card) => (
                   <Card infoCard={card} key={card.id.value} />
-                ))}
-                {row.map((card) => (
-                  <Modal infoCard={card} key={card.id.value} />
                 ))}
               </div>
             ))}
@@ -96,6 +93,13 @@ export default function Search() {
           />
         )}
       </div>
+      {chunk(pages[activePage - 1], 4).map((row, idx) => (
+        <div className="masonry" key={idx}>
+          {row.map((card) => (
+            <Modal infoCard={card} key={card.id.value} />
+          ))}
+        </div>
+      ))}
     </>
   );
 }

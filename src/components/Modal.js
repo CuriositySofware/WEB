@@ -34,11 +34,11 @@ export default function Modal({ infoCard = {} }) {
                 <p className="modal--p">{labelCreator?.value || "Desconocido"}</p>
                 <span className="modal--span">Ubicación</span>
                 <p className="modal--p">{labelKeeper?.value || "Desconocido"}</p>
-                <span className="modal--span">Periodo</span>
+                <span className="modal--span">Período</span>
                 <p className="modal--p">{period_l?.value || "Desconocido"}</p>
               </div>
               <div className="col-6">
-                <span className="modal--span">Notas</span>
+                <span className="modal--span">Descripción</span>
                 <p className="modal--p__large">{note?.value || "Sin notas"}</p>
               </div>
             </div>

@@ -34,7 +34,7 @@
     }
 
     &::placeholder {
-      color: $gray;
+      color: $secondary;
     }
   }
 
@@ -74,4 +74,8 @@
 
 .input-container-sm {
   font-size: 0.85rem !important;
+}
+
+.input-filter-box::placeholder {
+  color: $secondary;
 }

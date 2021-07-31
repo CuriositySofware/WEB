@@ -53,7 +53,7 @@ export default function Header() {
             <>
               <Link to="/login" className="link">
                 <span>
-                  <i className="fas fa-sign-in-alt"></i>Login
+                  <i className="fas fa-sign-in-alt"></i>Iniciar sesión
                 </span>
               </Link>
               <Link to="/register" className="link">

@@ -35,7 +35,7 @@ export default function Applications() {
         <div className="applications__loader">
           <Loader
             type="Circles"
-            color="#795933"
+            color="#233d4d"
             height={80}
             width={80}
             visible={true}
