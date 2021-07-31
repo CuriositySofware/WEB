@@ -58,6 +58,9 @@ export const updateArtifact = async (app, action, fields, token) => {
 };
 
 export const getImage = async (id) => {
+  //TODO: importante verificar por que llegan con _x y _p los id de las obras.
+  //de momento solo se consideran los casos _x, pero aqui deberian llegar sin _x ni _p
+  //para usar la query
   const search_id = id.split("_x")[0];
   const response = await fetch(`${API}/image/${search_id}`, {
     method: "GET",

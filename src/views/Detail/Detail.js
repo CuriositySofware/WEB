@@ -17,7 +17,7 @@ export default function Detail() {
     try {
       const response = await getArtifactById(id);
       const artifact = await response.json();
-      console.log(artifact);
+
       setartifact(
         Object.keys(artifact.result[0]).reduce((obj, key) => {
           obj[key] = artifact.result[0][key].value;
