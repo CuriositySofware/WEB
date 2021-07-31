@@ -16,7 +16,7 @@ export default function InputFilter(props) {
     onFocus,
     onBlur,
     required,
-    placeholder = "Busqueda",
+    placeholder = "Búsqueda",
     ...restProps
   } = props;
 

@@ -77,8 +77,8 @@ export default function Detail() {
                       <img
                         className="w-50"
                         src={imageLoaded}
-                        data-bs-toggle="modal"
-                        data-bs-target={`#img-modal`}
+                        //      data-bs-toggle="modal"
+                        //    data-bs-target={`#img-modal`}
                       />
                     </div>
                   </div>
@@ -127,7 +127,6 @@ export default function Detail() {
           </div>
         </>
       )}
-
     </>
   );
 }
